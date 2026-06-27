@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Profile</title>
+
+<link rel="stylesheet"
+href="css/style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">
+
+TONIME
+
+</div>
+
+</header>
+
+<div
+style="padding:120px 70px;">
+
+<h1>Profil Saya</h1>
+
+<h2>Bookmark</h2>
+
+<ul id="bookmark-list"></ul>
+
+</div>
+
+<script>
+
+const list=document.getElementById("bookmark-list");
+
+const data=JSON.parse(localStorage.getItem("bookmark"))||[];
+
+data.forEach(item=>{
+
+list.innerHTML+=`<li>${item}</li>`;
+
+});
+
+</script>
+
+</body>
+
+</html>
