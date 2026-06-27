@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rofnime – Nonton Anime</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#07030e;--p:#7c3aed;--pk:#d946ef;
+  --tx:#f0ebff;--mu:#7c6fa0;
+  --gl:rgba(124,58,237,.08);--bd:rgba(124,58,237,.18);
+  --card:#100a1f;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--bg);color:var(--tx);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 15% -5%,rgba(124,58,237,.2) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 100%,rgba(217,70,239,.14) 0%,transparent 60%);}
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;
+  justify-content:space-between;padding:0 20px;height:56px;
+  background:rgba(7,3,14,.97);border-bottom:1px solid var(--bd);backdrop-filter:blur(20px);}
+.logo{font-weight:900;font-size:1.1rem;letter-spacing:3px;cursor:pointer;user-select:none;
+  background:linear-gradient(135deg,#c084fc,#d946ef);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.search-wrap{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.05);
+  border:1px solid var(--bd);border-radius:10px;padding:8px 13px;transition:border-color .2s;}
+.search-wrap:focus-within{border-color:var(--p);}
+.search-wrap input{background:none;border:none;outline:none;color:var(--tx);
+  font-size:.84rem;width:160px;font-family:inherit;}
+.search-wrap input::placeholder{color:var(--mu);}
+.search-wrap button{background:none;border:none;cursor:pointer;color:var(--mu);
+  display:flex;padding:0;line-height:1;}
+.tabs{display:flex;gap:6px;padding:12px 20px 4px;overflow-x:auto;scrollbar-width:none;position:relative;z-index:1;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{flex-shrink:0;padding:7px 16px;border-radius:8px;cursor:pointer;font-size:.8rem;
+  font-weight:500;border:1px solid var(--bd);background:var(--gl);color:var(--mu);
+  transition:all .15s;white-space:nowrap;font-family:inherit;}
+.tab.active,.tab:hover{border-color:var(--p);background:rgba(124,58,237,.22);color:var(--tx);}
+.hero{padding:28px 20px 14px;position:relative;z-index:1;max-width:700px;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.badge{display:inline-flex;align-items:center;gap:7px;padding:5px 13px;border-radius:20px;
+  background:rgba(124,58,237,.14);border:1px solid rgba(124,58,237,.3);
+  font-size:.64rem;color:#c084fc;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--pk);
+  box-shadow:0 0 7px var(--pk);animation:blink 2s infinite;}
+.hero h1{font-weight:900;font-size:clamp(1.6rem,5vw,2.6rem);line-height:1.1;margin-bottom:10px;}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,#c084fc,#d946ef);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero p{font-size:.86rem;color:#c4b5fd;line-height:1.75;margin-bottom:18px;max-width:460px;}
+.hero-btn{display:inline-flex;align-items:center;gap:9px;padding:11px 22px;border-radius:11px;
+  background:linear-gradient(135deg,#7c3aed,#d946ef);border:none;color:#fff;
+  font-size:.86rem;font-weight:600;cursor:pointer;transition:opacity .15s;font-family:inherit;}
+.hero-btn:hover{opacity:.88;}
+.grid-wrap{padding:12px 20px 40px;position:relative;z-index:1;}
+.section-title{font-size:.74rem;font-weight:700;color:var(--mu);margin-bottom:12px;
+  text-transform:uppercase;letter-spacing:1px;}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(2,1fr);}
+@media(min-width:480px){.grid{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:700px){.grid{grid-template-columns:repeat(4,1fr);}}
+@media(min-width:900px){.grid{grid-template-columns:repeat(5,1fr);}}
+@media(min-width:1200px){.grid{grid-template-columns:repeat(6,1fr);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card{border-radius:12px;overflow:hidden;background:var(--card);border:1px solid var(--bd);
+  cursor:pointer;transition:transform .18s,box-shadow .18s,border-color .18s;
+  animation:fadeUp .3s ease both;}
+.card:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(124,58,237,.24);
+  border-color:rgba(124,58,237,.45);}
+.card-poster{position:relative;width:100%;aspect-ratio:2/3;overflow:hidden;
+  background:linear-gradient(135deg,#120824,#1a0a2e);}
+.card-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:7px;z-index:1;transition:opacity .5s;}
+.card-ph-emoji{font-size:2.4rem;line-height:1;}
+.card-ph-title{font-size:.58rem;color:var(--mu);text-align:center;
+  padding:0 8px;line-height:1.4;max-height:2.8em;overflow:hidden;}
+.card-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  z-index:2;opacity:0;transition:opacity .5s;}
+.card-img.loaded{opacity:1;}
+.card-img.loaded ~ .card-ph{opacity:0;}
+.card-overlay{position:absolute;inset:0;z-index:3;
+  background:linear-gradient(to top,rgba(7,3,14,.92) 0%,transparent 55%);
+  opacity:0;transition:opacity .2s;display:flex;align-items:center;justify-content:center;}
+.card:hover .card-overlay{opacity:1;}
+.play-btn{width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,#7c3aed,#d946ef);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 24px rgba(217,70,239,.55);}
+.card-score{position:absolute;top:7px;left:7px;z-index:4;padding:3px 7px;
+  border-radius:6px;font-size:.6rem;font-weight:700;color:#fff;
+  background:rgba(0,0,0,.78);display:flex;align-items:center;gap:3px;}
+.card-badge{position:absolute;top:7px;right:7px;z-index:4;padding:3px 7px;
+  border-radius:6px;font-size:.58rem;font-weight:700;color:#fff;}
+.badge-tv{background:rgba(124,58,237,.85);}
+.badge-movie{background:rgba(217,70,239,.85);}
+.badge-ova{background:rgba(59,130,246,.85);}
+.card-body{padding:9px 10px 11px;}
+.card-title{font-size:.78rem;font-weight:600;line-height:1.35;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:3px;}
+.card-meta{font-size:.65rem;color:var(--mu);}
+.card-live{color:#22d3ee;font-size:.62rem;font-weight:600;margin-top:3px;}
+.empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--mu);font-size:.88rem;}
+.empty-icon{font-size:2.4rem;display:block;margin-bottom:10px;}
+/* MODAL */
+.overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.9);
+  backdrop-filter:blur(14px);overflow-y:auto;}
+.overlay.open{display:block;}
+.overlay-inner{min-height:100%;display:flex;align-items:flex-start;justify-content:center;padding:16px;}
+.modal{background:#09031a;border:1px solid rgba(124,58,237,.28);border-radius:18px;
+  width:100%;max-width:900px;margin:auto;overflow:hidden;position:relative;}
+.modal-close{position:absolute;top:12px;right:12px;z-index:10;width:32px;height:32px;
+  border-radius:50%;background:rgba(255,255,255,.07);border:1px solid var(--bd);
+  color:var(--tx);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;transition:background .15s;}
+.modal-close:hover{background:rgba(124,58,237,.35);}
+.modal-head{display:flex;gap:16px;padding:16px;border-bottom:1px solid var(--bd);}
+.modal-poster-wrap{width:90px;flex-shrink:0;border-radius:10px;overflow:hidden;
+  background:linear-gradient(135deg,#120824,#1a0a2e);aspect-ratio:2/3;position:relative;}
+.modal-poster-ph{position:absolute;inset:0;display:flex;align-items:center;
+  justify-content:center;font-size:2rem;z-index:1;transition:opacity .5s;}
+.modal-poster-img{width:100%;height:100%;object-fit:cover;display:block;
+  opacity:0;transition:opacity .5s;position:absolute;inset:0;z-index:2;}
+.modal-poster-img.loaded{opacity:1;}
+.modal-poster-img.loaded ~ .modal-poster-ph{opacity:0;}
+.modal-info{flex:1;min-width:0;}
+.modal-title{font-weight:700;font-size:.95rem;line-height:1.3;margin-bottom:8px;}
+.modal-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;}
+.tag{padding:3px 9px;border-radius:20px;font-size:.62rem;font-weight:500;
+  border:1px solid rgba(255,255,255,.1);color:var(--mu);}
+.tag-score{border-color:rgba(234,179,8,.4);color:#fbbf24;background:rgba(234,179,8,.08);}
+.tag-on{border-color:rgba(34,211,238,.4);color:#22d3ee;background:rgba(34,211,238,.08);}
+.tag-done{border-color:rgba(34,197,94,.4);color:#4ade80;background:rgba(34,197,94,.08);}
+.modal-desc{font-size:.76rem;color:#c4b5fd;line-height:1.7;}
+.info-box{margin:0 16px 14px;padding:11px 14px;border-radius:10px;
+  background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.22);
+  font-size:.74rem;color:#c4b5fd;line-height:1.65;}
+.ep-section{padding:0 16px 16px;}
+.ep-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.ep-header span{font-size:.82rem;font-weight:600;}
+.ep-count{font-size:.7rem;color:var(--mu);}
+.ep-pages{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px;}
+.ep-pages button{padding:5px 10px;border-radius:7px;border:1px solid var(--bd);
+  background:var(--gl);color:var(--mu);font-size:.65rem;cursor:pointer;transition:all .15s;font-family:inherit;}
+.ep-pages button.active{border-color:var(--p);background:rgba(124,58,237,.22);color:var(--tx);}
+.ep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:5px;
+  max-height:290px;overflow-y:auto;padding-right:3px;}
+.ep-grid::-webkit-scrollbar{width:3px;}
+.ep-grid::-webkit-scrollbar-thumb{background:rgba(124,58,237,.4);border-radius:2px;}
+.ep-item{display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:8px;
+  cursor:pointer;background:rgba(255,255,255,.025);border:1px solid var(--bd);
+  transition:all .15s;text-decoration:none;color:var(--tx);}
+.ep-item:hover{background:rgba(124,58,237,.16);border-color:rgba(124,58,237,.5);}
+.ep-num{font-size:.61rem;font-weight:700;color:var(--p);white-space:nowrap;}
+.ep-title{font-size:.72rem;font-weight:500;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.ep-icon{width:23px;height:23px;border-radius:50%;flex-shrink:0;
+  background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.3);
+  display:flex;align-items:center;justify-content:center;font-size:.58rem;}
+.sites-section{padding:0 16px 20px;}
+.sites-section h3{font-size:.82rem;font-weight:600;margin-bottom:11px;}
+.site-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+@media(min-width:600px){.site-grid{grid-template-columns:repeat(3,1fr);}}
+.site-card{display:flex;align-items:center;gap:11px;padding:12px 13px;border-radius:10px;
+  background:rgba(255,255,255,.04);border:1px solid var(--bd);text-decoration:none;
+  color:var(--tx);transition:all .15s;}
+.site-card:hover{background:rgba(124,58,237,.16);border-color:rgba(124,58,237,.45);}
+.site-icon{font-size:1.5rem;flex-shrink:0;}
+.site-name{font-size:.78rem;font-weight:600;}
+.site-desc{font-size:.63rem;color:var(--mu);margin-top:2px;}
+footer{text-align:center;padding:0 20px 24px;color:var(--mu);font-size:.68rem;position:relative;z-index:1;}
+@media(max-width:500px){
+  nav{padding:0 14px;}
+  .search-wrap input{width:110px;}
+  .grid-wrap,.tabs{padding-left:14px;padding-right:14px;}
+  .hero{padding:20px 14px 10px;}
+  .modal-head{flex-direction:column;}
+  .modal-poster-wrap{width:80px;}
+  .ep-grid{grid-template-columns:1fr;}
+  .site-grid{grid-template-columns:1fr;}
+}
+@media(min-width:900px){
+  .modal-head{padding:20px;}
+  .modal-poster-wrap{width:110px;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo" onclick="goHome()">ROFNIME</div>
+  <div class="nav-right">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#7c6fa0" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="searchInput" placeholder="Cari anime…" oninput="onSearchInput()" onkeydown="if(event.key==='Enter')doSearch()">
+      <button id="clearBtn" onclick="clearSearch()" style="display:none">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#7c6fa0" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <button onclick="doSearch()">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#7c6fa0" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+<main>
+  <div class="hero" id="heroSection">
+    <div class="badge"><div class="dot"></div>100+ ANIME TERSEDIA</div>
+    <h1>Nonton <em>Anime</em><br>Langsung di Sini</h1>
+    <p>Pilih anime, pilih episode, dan tonton langsung di situs streaming terpercaya. Gratis, tanpa daftar.</p>
+    <button class="hero-btn" onclick="setTab('ongoing')">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="white"><path d="M8 5v14l11-7z"/></svg>
+      Sedang Tayang
+    </button>
+  </div>
+  <div class="tabs">
+    <button class="tab active" id="t-home"    onclick="setTab('home')">🏠 Beranda</button>
+    <button class="tab"        id="t-ongoing" onclick="setTab('ongoing')">🔥 Sedang Tayang</button>
+    <button class="tab"        id="t-top"     onclick="setTab('top')">⭐ Top Anime</button>
+    <button class="tab"        id="t-movie"   onclick="setTab('movie')">🎬 Movie</button>
+    <button class="tab"        id="t-ova"     onclick="setTab('ova')">📺 OVA/ONA</button>
+    <button class="tab"        id="t-search"  style="display:none" onclick="setTab('search')">🔍 Hasil Cari</button>
+  </div>
+  <div class="grid-wrap">
+    <div class="section-title" id="sectionTitle" style="display:none"></div>
+    <div class="grid" id="animeGrid"></div>
+  </div>
+</main>
+<footer>Data lokal · Streaming via situs eksternal · © 2026 Rofnime</footer>
+
+<!-- MODAL -->
+<div class="overlay" id="detailOverlay" onclick="overlayBgClose(event)">
+  <div class="overlay-inner">
+    <div class="modal" id="detailModal">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-head">
+        <div class="modal-poster-wrap">
+          <div class="modal-poster-ph" id="modalPh">🎌</div>
+          <img class="modal-poster-img" id="modalImg" src="" alt="" referrerpolicy="no-referrer" crossorigin="anonymous">
+        </div>
+        <div class="modal-info">
+          <div class="modal-title" id="modalTitle"></div>
+          <div class="modal-tags" id="modalTags"></div>
+          <div class="modal-desc" id="modalDesc"></div>
+        </div>
+      </div>
+      <div class="info-box">💡 Klik episode → terbuka di situs streaming → pilih server tercepat.</div>
+      <div class="ep-section">
+        <div class="ep-header"><span>📋 Episode</span><span class="ep-count" id="epCount"></span></div>
+        <div class="ep-pages" id="epPages"></div>
+        <div class="ep-grid" id="epGrid"></div>
+      </div>
+      <div class="sites-section">
+        <h3>🌐 Situs Streaming</h3>
+        <div class="site-grid" id="siteGrid"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+//  IMAGE ENGINE — AniList GraphQL API
+//  AniList supports full CORS from browsers, free, no auth.
+//  Query by MAL ID → get AniList cover image URL (no hotlink block)
+// ═══════════════════════════════════════════════════════════
+var imgCache = {}; // mal_id → image_url string
+var imgQueue = []; // pending {malId, callbacks[]}
+var fetchInProgress = {};
+
+function getAniListImg(malId, cb) {
+  if (imgCache[malId]) { cb(imgCache[malId]); return; }
+  if (!fetchInProgress[malId]) {
+    fetchInProgress[malId] = [cb];
+    fetchAniList(malId);
+  } else {
+    fetchInProgress[malId].push(cb);
+  }
+}
+
+function fetchAniList(malId) {
+  var query = 'query($id:Int){Media(idMal:$id,type:ANIME){coverImage{extraLarge large}}}';
+  fetch('https://graphql.anilist.co', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    body: JSON.stringify({query: query, variables: {id: malId}})
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(data) {
+    var img = data.data && data.data.Media && data.data.Media.coverImage;
+    var url = img ? (img.extraLarge || img.large) : null;
+    imgCache[malId] = url || '';
+    var cbs = fetchInProgress[malId] || [];
+    delete fetchInProgress[malId];
+    cbs.forEach(function(fn){ fn(url); });
+  })
+  .catch(function() {
+    imgCache[malId] = '';
+    var cbs = fetchInProgress[malId] || [];
+    delete fetchInProgress[malId];
+    cbs.forEach(function(fn){ fn(null); });
+  });
+}
+
+function applyImgToEl(imgEl, phEl, url) {
+  if (!url || !imgEl) return;
+  imgEl.onload = function() {
+    imgEl.classList.add('loaded');
+    if (phEl) phEl.style.opacity = '0';
+  };
+  imgEl.onerror = function() {};
+  imgEl.src = url;
+}
+
+// Load images with stagger to avoid rate limiting
+var loadQueue = [];
+var loadTimer = null;
+function queueImgLoad(malId, imgEl, phEl) {
+  loadQueue.push({malId: malId, imgEl: imgEl, phEl: phEl});
+  if (!loadTimer) {
+    loadTimer = setInterval(processQueue, 120);
+  }
+}
+function processQueue() {
+  if (loadQueue.length === 0) { clearInterval(loadTimer); loadTimer = null; return; }
+  var item = loadQueue.shift();
+  getAniListImg(item.malId, function(url) {
+    applyImgToEl(item.imgEl, item.phEl, url);
+  });
+}
+
+// ═══════════════════════════════════════════════════════════
+//  DATABASE
+// ═══════════════════════════════════════════════════════════
+var DB = [
+// ONGOING
+{id:1,mal:51535,title:"Attack on Titan: Final Season Part 3",status:"Ongoing",type:"TV",score:9.0,eps:30,year:2023,genres:["Action","Drama","Fantasy"],emoji:"⚔️",desc:"Eren Yeager memimpin The Rumbling menggunakan Titans kolosal untuk menghancurkan peradaban luar Paradis. Seri epik ini mencapai klimaks terbesarnya."},
+{id:2,mal:52305,title:"Demon Slayer: Hashira Training Arc",status:"Ongoing",type:"TV",score:8.7,eps:8,year:2024,genres:["Action","Fantasy","Supernatural"],emoji:"🗡️",desc:"Tanjiro dan rekan-rekan berlatih keras bersama para Hashira untuk persiapan menghadapi Muzan dalam pertarungan terakhir."},
+{id:3,mal:51009,title:"Jujutsu Kaisen Season 2",status:"Ongoing",type:"TV",score:9.0,eps:23,year:2023,genres:["Action","Fantasy","School"],emoji:"🩸",desc:"Arc Shibuya Incident — Tokyo menjadi medan perang. Geto palsu memimpin teror kutukan paling mematikan."},
+{id:4,mal:21,title:"One Piece",status:"Ongoing",type:"TV",score:8.7,eps:1110,year:1999,genres:["Action","Adventure","Comedy"],emoji:"🏴‍☠️",desc:"Monkey D. Luffy dan Kru Topi Jerami berlayar menuju One Piece yang legendaris."},
+{id:5,mal:41467,title:"Bleach: Thousand-Year Blood War",status:"Ongoing",type:"TV",score:9.0,eps:52,year:2022,genres:["Action","Supernatural"],emoji:"🌙",desc:"Ichigo dan para Shinigami menghadapi ancaman akhir dari Yhwach dan pasukan Quincy."},
+{id:6,mal:57215,title:"Solo Leveling Season 2",status:"Ongoing",type:"TV",score:8.6,eps:13,year:2025,genres:["Action","Adventure","Fantasy"],emoji:"⬆️",desc:"Sung Jin-Woo terus mengasah kekuatannya sebagai Shadow Monarch menghadapi ancaman baru."},
+{id:7,mal:54857,title:"Re:Zero Season 3",status:"Ongoing",type:"TV",score:8.8,eps:12,year:2024,genres:["Drama","Fantasy","Psychological"],emoji:"💀",desc:"Subaru Natsuki menghadapi kenyataan pahit. Return by Death membawanya ke lingkaran penderitaan tanpa ujung."},
+{id:8,mal:57535,title:"Dandadan",status:"Ongoing",type:"TV",score:8.5,eps:12,year:2024,genres:["Action","Comedy","Romance","Supernatural"],emoji:"👽",desc:"Okarun dan Momo terlibat petualangan supranatural penuh humor dari alien hingga hantu."},
+{id:9,mal:52991,title:"Frieren: Beyond Journey's End",status:"Ongoing",type:"TV",score:9.2,eps:28,year:2023,genres:["Adventure","Drama","Fantasy"],emoji:"🧝",desc:"Frieren si penyihir abadi melanjutkan perjalanan seorang diri, merenungkan makna waktu dan perpisahan."},
+{id:10,mal:55644,title:"Kaiju No. 8",status:"Ongoing",type:"TV",score:8.3,eps:12,year:2024,genres:["Action","Sci-Fi","Supernatural"],emoji:"👹",desc:"Kafka Hibino berubah menjadi Kaiju No. 8 dan harus menyembunyikan identitasnya."},
+{id:11,mal:58426,title:"Shangri-La Frontier",status:"Ongoing",type:"TV",score:8.2,eps:25,year:2023,genres:["Action","Adventure","Fantasy"],emoji:"🎮",desc:"Sunraku masuk ke VRMMO terbaik dan bertarung melawan boss legendaris yang belum pernah dikalahkan."},
+{id:12,mal:56838,title:"Mashle: Magic and Muscles S2",status:"Ongoing",type:"TV",score:8.1,eps:12,year:2024,genres:["Action","Comedy","Fantasy"],emoji:"💪",desc:"Mash Burnedead, tanpa sihir tapi dengan otot super, terus bertempur melawan ancaman terbesar."},
+// TOP
+{id:20,mal:5114,title:"Fullmetal Alchemist: Brotherhood",status:"Finished",type:"TV",score:9.1,eps:64,year:2009,genres:["Action","Adventure","Drama","Fantasy"],emoji:"⚗️",desc:"Edward dan Alphonse Elric mencari Philosopher's Stone untuk memulihkan tubuh mereka."},
+{id:21,mal:9253,title:"Steins;Gate",status:"Finished",type:"TV",score:9.1,eps:24,year:2011,genres:["Drama","Sci-Fi","Thriller"],emoji:"⏰",desc:"Okabe menemukan cara mengirim pesan ke masa lalu, memicu perubahan timeline yang berbahaya."},
+{id:22,mal:28977,title:"Gintama°",status:"Finished",type:"TV",score:9.1,eps:51,year:2015,genres:["Action","Comedy","Sci-Fi"],emoji:"🍭",desc:"Gintoki Sakata, samurai pemalas, menjalani petualangan konyol namun mengharukan."},
+{id:23,mal:11061,title:"Hunter x Hunter (2011)",status:"Finished",type:"TV",score:9.0,eps:148,year:2011,genres:["Action","Adventure","Fantasy"],emoji:"🃏",desc:"Gon Freecss melakukan perjalanan menjadi Hunter untuk menemukan ayahnya yang misterius."},
+{id:24,mal:1535,title:"Death Note",status:"Finished",type:"TV",score:8.6,eps:37,year:2006,genres:["Mystery","Psychological","Supernatural"],emoji:"📓",desc:"Light Yagami menemukan Death Note. Duel pikiran epik antara Light dan detektif L."},
+{id:25,mal:16498,title:"Shingeki no Kyojin",status:"Finished",type:"TV",score:8.5,eps:25,year:2013,genres:["Action","Drama","Fantasy"],emoji:"🔥",desc:"Humanity's last hope bertahan di balik tembok raksasa dari serangan Titans."},
+{id:26,mal:30276,title:"One Punch Man",status:"Finished",type:"TV",score:8.7,eps:12,year:2015,genres:["Action","Comedy","Sci-Fi"],emoji:"👊",desc:"Saitama bisa mengalahkan semua musuh dengan satu pukulan. Kekuatan ini membuatnya bosan."},
+{id:27,mal:23273,title:"Shigatsu wa Kimi no Uso",status:"Finished",type:"TV",score:8.7,eps:22,year:2014,genres:["Drama","Music","Romance"],emoji:"🎹",desc:"Kousei kehilangan kemampuan mendengar nada. Kaori membawanya kembali ke dunia musik."},
+{id:28,mal:19,title:"Monster",status:"Finished",type:"TV",score:8.7,eps:74,year:2004,genres:["Drama","Mystery","Thriller"],emoji:"👁️",desc:"Dr. Tenma menyelamatkan anak yang tumbuh jadi pembunuh berantai. Ia harus membetulkan kesalahannya."},
+{id:29,mal:1,title:"Cowboy Bebop",status:"Finished",type:"TV",score:8.7,eps:26,year:1998,genres:["Action","Adventure","Sci-Fi"],emoji:"🚀",desc:"Spike Spiegel dan kru Bebop adalah pemburu hadiah di luar angkasa. Klasik legendaris."},
+// MOVIE
+{id:40,mal:20954,title:"Kimetsu: Mugen Train",status:"Finished",type:"Movie",score:8.2,eps:1,year:2020,genres:["Action","Fantasy","Supernatural"],emoji:"🚂",desc:"Tanjiro dan kawan-kawan menaiki Mugen Train bersama Rengoku untuk menyelidiki hilangnya 40 orang."},
+{id:41,mal:32281,title:"Kimi no Na wa",status:"Finished",type:"Movie",score:8.9,eps:1,year:2016,genres:["Drama","Romance","Supernatural"],emoji:"☄️",desc:"Mitsuha dan Taki bertukar tubuh secara misterius, mencari satu sama lain melewati ruang dan waktu."},
+{id:42,mal:38000,title:"Tenki no Ko",status:"Finished",type:"Movie",score:8.5,eps:1,year:2019,genres:["Drama","Fantasy","Romance"],emoji:"🌦️",desc:"Hodaka bertemu Hina, gadis yang bisa mengendalikan cuaca. Romansa dengan harga sangat mahal."},
+{id:43,mal:43608,title:"Jujutsu Kaisen 0",status:"Finished",type:"Movie",score:8.1,eps:1,year:2021,genres:["Action","Fantasy","Horror"],emoji:"🌸",desc:"Yuta Okkotsu dihantui kutukan kuat roh kekasihnya Rika dan bergabung dengan Jujutsu High."},
+{id:44,mal:199,title:"Sen to Chihiro no Kamikakushi",status:"Finished",type:"Movie",score:8.8,eps:1,year:2001,genres:["Adventure","Drama","Fantasy"],emoji:"🏮",desc:"Chihiro terjebak di dunia roh setelah orang tuanya berubah jadi babi."},
+{id:45,mal:37779,title:"Violet Evergarden Movie",status:"Finished",type:"Movie",score:8.9,eps:1,year:2020,genres:["Drama","Fantasy","Slice of Life"],emoji:"💌",desc:"Violet terus menuliskan surat sambil mencari makna kata-kata terakhir sang mayor."},
+{id:46,mal:44511,title:"Belle",status:"Finished",type:"Movie",score:7.9,eps:1,year:2021,genres:["Drama","Sci-Fi","Romance"],emoji:"🌹",desc:"Suzu menjadi penyanyi terkenal di dunia virtual U dan menyelidiki misteri si Beast."},
+// OVA/ONA
+{id:60,mal:2251,title:"Baccano!",status:"Finished",type:"ONA",score:8.4,eps:13,year:2007,genres:["Action","Comedy","Mystery"],emoji:"🚂",desc:"Kisah berlapis gangster, alchemist, dan immortal yang bertemu di kereta Amerika era 1930-an."},
+{id:61,mal:31240,title:"Re:Zero - Starting Life in Another World",status:"Finished",type:"TV",score:8.3,eps:25,year:2016,genres:["Drama","Fantasy","Psychological"],emoji:"🔮",desc:"Subaru mendapatkan kemampuan Return by Death — hidup kembali setiap mati dengan kenangan utuh."},
+{id:62,mal:35760,title:"Darling in the FranXX",status:"Finished",type:"ONA",score:7.3,eps:24,year:2018,genres:["Action","Drama","Romance","Sci-Fi"],emoji:"🌹",desc:"Anak-anak dikondisikan untuk mengemudikan robot raksasa. Hiro dan Zero Two menjalin ikatan istimewa."},
+{id:63,mal:37510,title:"Yakusoku no Neverland",status:"Finished",type:"ONA",score:8.5,eps:12,year:2019,genres:["Mystery","Thriller"],emoji:"🌿",desc:"Emma dan teman-teman menyadari panti asuhan mereka adalah peternakan manusia."},
+];
+
+var SITES = [
+  {name:"Anoboy",desc:"Sub Indonesia",icon:"🎌",url:"https://anoboy.one"},
+  {name:"Otakudesu",desc:"Sub Indonesia",icon:"🍜",url:"https://otakudesu.cloud"},
+  {name:"Kusonime",desc:"Sub Indonesia",icon:"🌸",url:"https://kusonime.com"},
+  {name:"Samehadaku",desc:"Sub Indonesia",icon:"🐟",url:"https://samehadaku.email"},
+  {name:"Crunchyroll",desc:"Official Multi-sub",icon:"🟠",url:"https://www.crunchyroll.com"},
+  {name:"Gogoanime",desc:"English Sub",icon:"🌍",url:"https://gogoanime3.cc"},
+];
+
+// ─── STATE ────────────────────────────────────────────────
+var currentTab = 'home';
+var searchResults = [];
+var searchQuery = '';
+
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// ─── TABS ─────────────────────────────────────────────────
+function setTab(tab) {
+  currentTab = tab;
+  ['home','ongoing','top','movie','ova','search'].forEach(function(t){
+    var el = document.getElementById('t-'+t);
+    if(el) el.classList.toggle('active', t===tab);
+  });
+  document.getElementById('heroSection').style.display = (tab==='home') ? '' : 'none';
+  var st = document.getElementById('sectionTitle');
+  var labels = {home:'',ongoing:'🔥 Sedang Tayang',top:'⭐ Top Anime',movie:'🎬 Movie',ova:'📺 OVA / ONA',search:'🔍 Hasil: "'+searchQuery+'"'};
+  if(tab==='home'){ st.style.display='none'; } else { st.style.display=''; st.textContent=labels[tab]||''; }
+  renderGrid(getList(tab));
+}
+
+function getList(tab) {
+  if(tab==='home')    return DB.slice(0,16);
+  if(tab==='ongoing') return DB.filter(function(a){ return a.status==='Ongoing'; });
+  if(tab==='top')     return DB.filter(function(a){ return a.score>=8.5; }).sort(function(a,b){ return b.score-a.score; });
+  if(tab==='movie')   return DB.filter(function(a){ return a.type==='Movie'; });
+  if(tab==='ova')     return DB.filter(function(a){ return a.type==='OVA'||a.type==='ONA'; });
+  if(tab==='search')  return searchResults;
+  return DB;
+}
+
+// ─── SEARCH ───────────────────────────────────────────────
+function onSearchInput() {
+  var v = document.getElementById('searchInput').value;
+  document.getElementById('clearBtn').style.display = v ? '' : 'none';
+}
+function doSearch() {
+  var q = document.getElementById('searchInput').value.trim().toLowerCase();
+  if(!q) return;
+  searchQuery = q;
+  searchResults = DB.filter(function(a){
+    return a.title.toLowerCase().includes(q)||(a.genres||[]).join(' ').toLowerCase().includes(q);
+  });
+  document.getElementById('t-search').style.display = '';
+  setTab('search');
+}
+function clearSearch() {
+  document.getElementById('searchInput').value='';
+  document.getElementById('clearBtn').style.display='none';
+  document.getElementById('t-search').style.display='none';
+  if(currentTab==='search') setTab('home');
+}
+function goHome() { clearSearch(); setTab('home'); }
+
+// ─── RENDER GRID ──────────────────────────────────────────
+function renderGrid(list) {
+  // Reset queue
+  loadQueue = [];
+  if(loadTimer){ clearInterval(loadTimer); loadTimer=null; }
+
+  var grid = document.getElementById('animeGrid');
+  if(!list.length){
+    grid.innerHTML='<div class="empty"><span class="empty-icon">🔍</span>Tidak ditemukan.</div>';
+    return;
+  }
+  grid.innerHTML = list.map(function(a,i){
+    var bc = a.type==='Movie'?'badge-movie':a.type==='OVA'||a.type==='ONA'?'badge-ova':'badge-tv';
+    return '<div class="card" onclick="openModal('+a.id+')" style="animation-delay:'+Math.min(i*0.04,0.5)+'s">'+
+      '<div class="card-poster">'+
+        '<div class="card-ph" id="ph-'+a.id+'">'+
+          '<div class="card-ph-emoji">'+a.emoji+'</div>'+
+          '<div class="card-ph-title">'+esc(a.title)+'</div>'+
+        '</div>'+
+        '<img class="card-img" id="ci-'+a.id+'" src="" alt="'+esc(a.title)+'" referrerpolicy="no-referrer">'+
+        '<div class="card-overlay"><div class="play-btn"><svg viewBox="0 0 24 24" width="16" height="16" fill="white"><path d="M8 5v14l11-7z"/></svg></div></div>'+
+        '<div class="card-score">⭐ '+a.score+'</div>'+
+        '<div class="card-badge '+bc+'">'+esc(a.type)+'</div>'+
+      '</div>'+
+      '<div class="card-body">'+
+        '<div class="card-title">'+esc(a.title)+'</div>'+
+        '<div class="card-meta">'+a.year+' · '+a.eps+' ep</div>'+
+        (a.status==='Ongoing'?'<div class="card-live">● Tayang</div>':'')+
+      '</div>'+
+    '</div>';
+  }).join('');
+
+  // Queue image loads with stagger
+  list.forEach(function(a) {
+    var imgEl = document.getElementById('ci-'+a.id);
+    var phEl  = document.getElementById('ph-'+a.id);
+    if(imgEl && a.mal) queueImgLoad(a.mal, imgEl, phEl);
+  });
+}
+
+// ─── MODAL ────────────────────────────────────────────────
+var EP_PER_PAGE = 50;
+var modalEpPage = 0;
+var modalAnime  = null;
+
+function openModal(id) {
+  var a = DB.find(function(x){ return x.id===id; });
+  if(!a) return;
+  modalAnime=a; modalEpPage=0;
+
+  document.getElementById('modalTitle').textContent = a.title;
+  document.getElementById('modalDesc').textContent  = a.desc;
+  document.getElementById('modalPh').textContent    = a.emoji;
+
+  var tags = document.getElementById('modalTags');
+  tags.innerHTML =
+    '<span class="tag tag-score">⭐ '+a.score+'</span>'+
+    '<span class="tag '+(a.status==='Ongoing'?'tag-on':'tag-done')+'">'+(a.status==='Ongoing'?'Sedang Tayang':'Selesai')+'</span>'+
+    '<span class="tag">'+a.type+'</span>'+
+    '<span class="tag">'+a.year+'</span>'+
+    a.genres.map(function(g){ return '<span class="tag">'+esc(g)+'</span>'; }).join('');
+
+  // Modal poster
+  var mImg = document.getElementById('modalImg');
+  var mPh  = document.getElementById('modalPh');
+  mImg.classList.remove('loaded');
+  mImg.src=''; mPh.style.opacity='1';
+  if(a.mal) {
+    getAniListImg(a.mal, function(url){ applyImgToEl(mImg, mPh, url); });
+  }
+
+  renderEpPages(a);
+  renderEpGrid(a,0);
+  renderSites(a);
+  document.getElementById('detailOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function renderEpPages(a) {
+  var total=a.eps||1, pages=Math.ceil(total/EP_PER_PAGE);
+  var cont=document.getElementById('epPages');
+  if(pages<=1){cont.innerHTML='';return;}
+  cont.innerHTML=Array.from({length:pages},function(_,i){
+    var from=i*EP_PER_PAGE+1,to=Math.min((i+1)*EP_PER_PAGE,total);
+    return '<button class="'+(i===0?'active':'')+'" onclick="switchEpPage('+i+')">'+from+'-'+to+'</button>';
+  }).join('');
+}
+function switchEpPage(pg){
+  modalEpPage=pg;
+  document.querySelectorAll('#epPages button').forEach(function(b,i){b.classList.toggle('active',i===pg);});
+  renderEpGrid(modalAnime,pg);
+}
+function renderEpGrid(a,pg){
+  var total=a.eps||1,from=pg*EP_PER_PAGE,to=Math.min(from+EP_PER_PAGE,total);
+  document.getElementById('epCount').textContent=total+' episode';
+  var items='';
+  for(var i=from+1;i<=to;i++){
+    var url='https://otakudesu.cloud/?s='+encodeURIComponent(a.title+' episode '+i);
+    items+='<a class="ep-item" href="'+url+'" target="_blank" rel="noopener">'+
+      '<div class="ep-icon">▶</div>'+
+      '<span class="ep-num">Ep '+i+'</span>'+
+      '<span class="ep-title">'+esc(a.title.length>18?a.title.substring(0,18)+'…':a.title)+'</span>'+
+    '</a>';
+  }
+  document.getElementById('epGrid').innerHTML=items;
+}
+function renderSites(a){
+  document.getElementById('siteGrid').innerHTML=SITES.map(function(s){
+    var q=encodeURIComponent(a.title);
+    var url=s.url+(s.url.includes('crunchyroll')?'/search?q='+q:s.url.includes('gogoanime')?'/search.html?keyword='+q:'/?s='+q);
+    return '<a class="site-card" href="'+url+'" target="_blank" rel="noopener">'+
+      '<div class="site-icon">'+s.icon+'</div>'+
+      '<div><div class="site-name">'+esc(s.name)+'</div><div class="site-desc">'+esc(s.desc)+'</div></div>'+
+    '</a>';
+  }).join('');
+}
+function closeModal(){
+  document.getElementById('detailOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function overlayBgClose(e){
+  if(e.target===document.getElementById('detailOverlay')) closeModal();
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+
+// INIT
+setTab('home');
+</script>
+</body>
+</html>
