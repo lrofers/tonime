@@ -42,6 +42,28 @@ color:var(--text);
 
 overflow-x:hidden;
 
+   body.light{
+
+background:#f4f6fa;
+
+color:#111;
+
+}
+
+body.light .card{
+
+background:white;
+
+color:black;
+
+}
+
+body.light .navbar{
+
+background:white;
+
+}
+   
 }
 
 /* NAVBAR */
