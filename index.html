@@ -5,71 +5,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tonime! - Nonton Anime Online</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg: #0a0010;
-  --bg2: rgba(20,8,40,0.85);
-  --bg3: rgba(35,15,65,0.7);
-  --bg4: rgba(55,25,100,0.6);
-  --accent: #9333ea;
-  --accent2: #c084fc;
-  --accent3: #e9d5ff;
-  --gold: #f59e0b;
-  --text: #f5f0ff;
-  --text2: #c4b5fd;
-  --text3: #7c5abf;
-  --red: #ef4444;
-  --green: #22c55e;
-  --glass: rgba(120, 60, 220, 0.13);
-  --glass-border: rgba(180, 120, 255, 0.22);
-  --glass-hover: rgba(140, 80, 240, 0.22);
-  --card-r: 14px;
-  --sw: 230px;
-  --blur: blur(18px);
+  --bg:#0a0010;
+  --bg2:rgba(20,8,40,0.92);
+  --bg3:rgba(35,15,65,0.7);
+  --bg4:rgba(55,25,100,0.6);
+  --accent:#9333ea;
+  --accent2:#c084fc;
+  --accent3:#e9d5ff;
+  --gold:#f59e0b;
+  --text:#f5f0ff;
+  --text2:#c4b5fd;
+  --text3:#7c5abf;
+  --red:#ef4444;
+  --green:#22c55e;
+  --glass:rgba(120,60,220,0.13);
+  --glass-border:rgba(180,120,255,0.22);
+  --glass-hover:rgba(140,80,240,0.22);
+  --card-r:14px;
+  --sw:230px;
+  --blur:blur(18px);
 }
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;overflow-x:hidden}
-
-/* PURPLE GLOW BACKGROUND */
-body::before{
-  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse 60% 50% at 15% 20%, rgba(147,51,234,0.28) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 60% at 85% 80%, rgba(109,40,217,0.22) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(76,29,149,0.15) 0%, transparent 70%);
-}
-
-/* SCROLLBAR */
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 15% 20%,rgba(147,51,234,0.28) 0%,transparent 70%),radial-gradient(ellipse 50% 60% at 85% 80%,rgba(109,40,217,0.22) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 50% 50%,rgba(76,29,149,0.15) 0%,transparent 70%)}
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:rgba(147,51,234,0.4);border-radius:3px}
 ::-webkit-scrollbar-thumb:hover{background:rgba(147,51,234,0.7)}
 
 /* SIDEBAR */
-.sidebar{
-  width:var(--sw);
-  background:var(--bg2);
-  border-right:1px solid var(--glass-border);
-  backdrop-filter:var(--blur);
-  -webkit-backdrop-filter:var(--blur);
-  display:flex;flex-direction:column;padding:20px 0;
-  position:fixed;top:0;left:0;bottom:0;z-index:100;overflow-y:auto;
-  box-shadow:4px 0 30px rgba(0,0,0,0.4);
-}
-.logo{padding:0 18px 22px;font-size:26px;font-weight:900;letter-spacing:-.5px;cursor:pointer;display:flex;align-items:center;gap:4px}
-.logo-ton{color:var(--accent2)}
-.logo-ime{color:var(--text)}
-.logo-bang{font-size:11px;color:var(--gold);vertical-align:super;margin-left:1px;margin-top:-4px}
+.sidebar{width:var(--sw);background:var(--bg2);border-right:1px solid var(--glass-border);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);display:flex;flex-direction:column;padding:20px 0;position:fixed;top:0;left:0;bottom:0;z-index:100;overflow-y:auto;box-shadow:4px 0 30px rgba(0,0,0,0.4)}
+.logo{padding:0 18px 22px;font-size:26px;font-weight:900;letter-spacing:-.5px;cursor:pointer;display:flex;align-items:center;gap:8px}
+.logo-ton{color:var(--accent2)}.logo-ime{color:var(--text)}.logo-bang{font-size:11px;color:var(--gold);vertical-align:super;margin-left:1px}
 .logo-icon{width:28px;height:28px;background:linear-gradient(135deg,var(--accent),#6d28d9);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 16px rgba(147,51,234,0.5)}
-.logo-icon svg{color:#fff}
-
+.logo-icon svg{color:#fff;width:16px;height:16px}
 .nav-section-label{padding:5px 18px 3px;font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.7px}
-.nav-item{
-  display:flex;align-items:center;gap:10px;padding:10px 18px;
-  cursor:pointer;color:var(--text2);font-size:13.5px;font-weight:500;
-  transition:all .15s;position:relative;
-}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 18px;cursor:pointer;color:var(--text2);font-size:13.5px;font-weight:500;transition:all .15s;position:relative}
 .nav-item svg{width:17px;height:17px;flex-shrink:0;opacity:.8}
 .nav-item:hover{background:var(--glass-hover);color:var(--text)}
 .nav-item:hover svg{opacity:1}
@@ -77,8 +50,6 @@ body::before{
 .nav-item.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--accent2),var(--accent));border-radius:0 3px 3px 0}
 .nav-item.active svg{opacity:1;color:var(--accent2)}
 .nav-divider{height:1px;background:var(--glass-border);margin:8px 0}
-
-/* genre expand */
 .genre-sub{display:none;flex-direction:column}
 .genre-sub.open{display:flex}
 .genre-sub .nav-item{padding:8px 18px 8px 46px;font-size:13px}
@@ -87,52 +58,20 @@ body::before{
 
 /* MAIN */
 .main{margin-left:var(--sw);flex:1;min-height:100vh;position:relative;z-index:1}
-
-/* TOPBAR */
-.topbar{
-  background:var(--bg2);
-  border-bottom:1px solid var(--glass-border);
-  backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
-  padding:12px 22px;display:flex;align-items:center;gap:10px;
-  position:sticky;top:0;z-index:50;
-  box-shadow:0 4px 24px rgba(0,0,0,0.3);
-}
-.search-wrap{
-  flex:1;max-width:380px;
-  background:var(--glass);
-  border:1px solid var(--glass-border);
-  border-radius:10px;
-  display:flex;align-items:center;padding:0 12px;gap:8px;
-  transition:border-color .2s,background .2s;
-}
+.topbar{background:var(--bg2);border-bottom:1px solid var(--glass-border);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);padding:12px 22px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:50;box-shadow:0 4px 24px rgba(0,0,0,0.3)}
+.search-wrap{flex:1;max-width:380px;background:var(--glass);border:1px solid var(--glass-border);border-radius:10px;display:flex;align-items:center;padding:0 12px;gap:8px;transition:border-color .2s,background .2s;cursor:pointer}
 .search-wrap:focus-within{border-color:var(--accent);background:rgba(147,51,234,0.15)}
 .search-wrap svg{width:15px;height:15px;color:var(--text3);flex-shrink:0}
 .search-wrap input{background:none;border:none;outline:none;color:var(--text);font-size:13.5px;padding:9px 0;flex:1;font-family:inherit}
 .search-wrap input::placeholder{color:var(--text3)}
 .topbar-actions{margin-left:auto;display:flex;align-items:center;gap:8px}
-.tb-btn{
-  background:var(--glass);border:1px solid var(--glass-border);
-  color:var(--text2);border-radius:9px;padding:8px 13px;
-  cursor:pointer;font-size:13px;font-weight:500;
-  display:flex;align-items:center;gap:6px;
-  transition:all .15s;font-family:inherit;backdrop-filter:var(--blur);
-}
+.tb-btn{background:var(--glass);border:1px solid var(--glass-border);color:var(--text2);border-radius:9px;padding:8px 13px;cursor:pointer;font-size:13px;font-weight:500;display:flex;align-items:center;gap:6px;transition:all .15s;font-family:inherit;backdrop-filter:var(--blur)}
 .tb-btn svg{width:15px;height:15px}
 .tb-btn:hover{background:var(--glass-hover);color:var(--text);border-color:var(--accent)}
-.notif-btn{
-  position:relative;background:var(--glass);border:1px solid var(--glass-border);
-  border-radius:9px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:all .15s;backdrop-filter:var(--blur);
-}
+.notif-btn{position:relative;background:var(--glass);border:1px solid var(--glass-border);border-radius:9px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;backdrop-filter:var(--blur)}
 .notif-btn svg{width:17px;height:17px;color:var(--text2)}
 .notif-btn:hover{background:var(--glass-hover);border-color:var(--accent)}
-.notif-badge{
-  position:absolute;top:-4px;right:-4px;
-  background:var(--red);color:#fff;font-size:10px;font-weight:700;
-  border-radius:50%;width:17px;height:17px;
-  display:flex;align-items:center;justify-content:center;
-  border:2px solid var(--bg);
-}
+.notif-badge{position:absolute;top:-4px;right:-4px;background:var(--red);color:#fff;font-size:10px;font-weight:700;border-radius:50%;width:17px;height:17px;display:flex;align-items:center;justify-content:center;border:2px solid var(--bg)}
 
 /* PAGES */
 .page{display:none;padding:22px}
@@ -145,21 +84,10 @@ body::before{
 .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center top;transition:opacity .4s}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(5,0,20,.93) 35%,rgba(10,0,30,.25) 100%)}
 .hero-overlay2{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,0,20,.7) 0%,transparent 50%)}
-.cover-shimmer{
-  position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(25,10,50,1) 25%,rgba(45,20,80,1) 37%,rgba(25,10,50,1) 63%);
-  background-size:400% 100%;
-  animation:shimmer 1.4s ease infinite;
-}
+.cover-shimmer{position:absolute;inset:0;background:linear-gradient(90deg,rgba(25,10,50,1) 25%,rgba(45,20,80,1) 37%,rgba(25,10,50,1) 63%);background-size:400% 100%;animation:shimmer 1.4s ease infinite}
 @keyframes shimmer{0%{background-position:100% 0}100%{background-position:0 0}}
 .hero-content{position:relative;z-index:2;padding:28px 34px;height:100%;display:flex;flex-direction:column;justify-content:flex-end}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:5px;
-  background:rgba(147,51,234,0.25);border:1px solid rgba(192,132,252,0.4);
-  border-radius:6px;padding:4px 10px;font-size:11px;font-weight:700;
-  color:var(--accent2);margin-bottom:8px;width:fit-content;
-  backdrop-filter:blur(8px);
-}
+.hero-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(147,51,234,0.25);border:1px solid rgba(192,132,252,0.4);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:700;color:var(--accent2);margin-bottom:8px;width:fit-content;backdrop-filter:blur(8px)}
 .hero-badge svg{width:12px;height:12px}
 .hero-title{font-size:26px;font-weight:900;line-height:1.15;margin-bottom:8px;text-shadow:0 2px 16px rgba(0,0,0,.8)}
 .hero-title strong{color:var(--accent2)}
@@ -167,46 +95,18 @@ body::before{
 .hero-meta span{font-size:12.5px;color:rgba(212,180,255,.8);display:flex;align-items:center;gap:4px}
 .hero-meta span svg{width:13px;height:13px}
 .hero-acts{display:flex;gap:8px}
-.btn-watch{
-  background:linear-gradient(135deg,var(--accent),#6d28d9);
-  color:#fff;border:none;border-radius:9px;padding:9px 18px;
-  font-size:13.5px;font-weight:700;cursor:pointer;
-  display:flex;align-items:center;gap:6px;
-  transition:all .2s;font-family:inherit;
-  box-shadow:0 4px 20px rgba(147,51,234,0.5);
-}
+.btn-watch{background:linear-gradient(135deg,var(--accent),#6d28d9);color:#fff;border:none;border-radius:9px;padding:9px 18px;font-size:13.5px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .2s;font-family:inherit;box-shadow:0 4px 20px rgba(147,51,234,0.5)}
 .btn-watch svg{width:16px;height:16px}
 .btn-watch:hover{box-shadow:0 6px 28px rgba(147,51,234,0.75);transform:translateY(-1px)}
-.btn-add{
-  background:rgba(255,255,255,.08);color:#fff;
-  border:1px solid rgba(255,255,255,.2);
-  border-radius:9px;padding:9px 14px;font-size:13.5px;font-weight:600;
-  cursor:pointer;transition:all .15s;font-family:inherit;
-  backdrop-filter:blur(8px);display:flex;align-items:center;gap:5px;
-}
+.btn-add{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:9px;padding:9px 14px;font-size:13.5px;font-weight:600;cursor:pointer;transition:all .15s;font-family:inherit;backdrop-filter:blur(8px);display:flex;align-items:center;gap:5px}
 .btn-add svg{width:15px;height:15px}
 .btn-add:hover{background:rgba(147,51,234,0.25);border-color:var(--accent)}
-.hero-views{
-  position:absolute;top:14px;right:14px;z-index:2;
-  background:rgba(0,0,0,.5);border:1px solid rgba(147,51,234,.3);
-  border-radius:8px;padding:5px 11px;font-size:12px;font-weight:600;
-  display:flex;align-items:center;gap:5px;backdrop-filter:blur(8px);
-  color:var(--accent3);
-}
+.hero-views{position:absolute;top:14px;right:14px;z-index:2;background:rgba(0,0,0,.5);border:1px solid rgba(147,51,234,.3);border-radius:8px;padding:5px 11px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:5px;backdrop-filter:blur(8px);color:var(--accent3)}
 .hero-views svg{width:14px;height:14px}
-
-/* Slider Nav Arrows */
-.slider-arrow{
-  position:absolute;top:50%;transform:translateY(-50%);z-index:3;
-  background:rgba(147,51,234,0.25);border:1px solid var(--glass-border);
-  color:#fff;width:36px;height:36px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;cursor:pointer;
-  backdrop-filter:blur(8px);transition:all .2s;
-}
+.slider-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;background:rgba(147,51,234,0.25);border:1px solid var(--glass-border);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(8px);transition:all .2s}
 .slider-arrow:hover{background:rgba(147,51,234,0.55);border-color:var(--accent2)}
 .slider-arrow svg{width:18px;height:18px}
-.slider-arrow.prev{left:12px}
-.slider-arrow.next{right:12px}
+.slider-arrow.prev{left:12px}.slider-arrow.next{right:12px}
 .hero-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:2}
 .hero-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;transition:all .25s}
 .hero-dot.active{background:var(--accent2);width:20px;border-radius:4px}
@@ -226,45 +126,30 @@ body::before{
 .hscroll::-webkit-scrollbar-thumb{background:rgba(147,51,234,0.35);border-radius:2px}
 
 /* CARDS */
-.anime-card{
-  flex-shrink:0;cursor:pointer;border-radius:var(--card-r);overflow:hidden;
-  background:var(--bg3);
-  border:1px solid var(--glass-border);
-  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  transition:transform .2s,box-shadow .2s,border-color .2s;
-  position:relative;
-}
+.anime-card{flex-shrink:0;cursor:pointer;border-radius:var(--card-r);overflow:hidden;background:var(--bg3);border:1px solid var(--glass-border);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform .2s,box-shadow .2s,border-color .2s;position:relative}
 .anime-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.55),0 0 0 1px rgba(192,132,252,.3);border-color:rgba(192,132,252,.35)}
 .card-sm{width:138px}.card-md{width:190px}.card-lg{width:210px}
 .card-img{position:relative;background:rgba(25,10,50,1)}
 .card-sm .card-img{height:186px}.card-md .card-img{height:260px}.card-lg .card-img{height:280px}
 .card-img img{width:100%;height:100%;object-fit:cover;display:block}
-.card-ph{width:100%;height:100%;background:linear-gradient(135deg,rgba(30,12,60,1),rgba(50,20,90,1));display:flex;align-items:center;justify-content:center;font-size:28px;position:relative;overflow:hidden}
+.card-ph{width:100%;height:100%;background:linear-gradient(135deg,rgba(30,12,60,1),rgba(50,20,90,1));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.card-ph svg{width:40px;height:40px;color:rgba(147,51,234,0.5)}
 .card-ph img{width:100%;height:100%;object-fit:cover;display:block;animation:coverFade .3s ease}
 @keyframes coverFade{from{opacity:0}to{opacity:1}}
 .card-new{position:absolute;top:7px;left:7px;background:linear-gradient(135deg,var(--accent),#6d28d9);color:#fff;font-size:9px;font-weight:800;border-radius:5px;padding:2px 7px;text-transform:uppercase;letter-spacing:.3px}
-.card-type{position:absolute;top:7px;left:7px;background:linear-gradient(135deg,#7c3aed,#4c1d95);color:#fff;font-size:9px;font-weight:800;border-radius:5px;padding:2px 7px;text-transform:uppercase}
 .card-rating{position:absolute;top:7px;right:7px;background:rgba(0,0,0,.7);border:1px solid rgba(245,158,11,.3);border-radius:5px;padding:2px 7px;font-size:10.5px;font-weight:700;display:flex;align-items:center;gap:3px;color:var(--gold);backdrop-filter:blur(6px)}
 .card-rating svg{width:11px;height:11px}
 .card-ep{position:absolute;bottom:7px;left:7px;background:rgba(0,0,0,.75);border:1px solid rgba(147,51,234,.3);border-radius:5px;padding:3px 8px;font-size:11.5px;font-weight:700;backdrop-filter:blur(6px);color:var(--accent3)}
-.prog-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,.08)}
-.prog-fill{height:100%;background:linear-gradient(to right,var(--accent),var(--accent2));border-radius:0 2px 2px 0}
 .card-body{padding:8px 10px 10px;background:rgba(10,0,30,.5)}
 .card-title{font-size:12px;font-weight:700;line-height:1.3;margin-bottom:3px;color:var(--text)}
 .card-views{font-size:11px;color:var(--text3);display:flex;align-items:center;gap:3px;margin-bottom:2px}
 .card-views svg{width:11px;height:11px}
-
-/* GRID */
 .anime-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(152px,1fr));gap:13px}
 .anime-grid .anime-card{width:100%}
 .anime-grid .card-img{height:210px}
 
-/* GLASS CARD PANELS */
-.glass-panel{
-  background:var(--bg3);border:1px solid var(--glass-border);
-  border-radius:14px;backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
-  padding:16px;
-}
+/* GLASS CARD */
+.glass-panel{background:var(--bg3);border:1px solid var(--glass-border);border-radius:14px;backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);padding:16px}
 
 /* GENRE PAGE */
 .genre-hero{padding:20px;margin-bottom:20px}
@@ -272,36 +157,25 @@ body::before{
 .genre-hero-title svg{width:20px;height:20px;color:var(--accent2)}
 .genre-hero-desc{font-size:13px;color:var(--text2);line-height:1.5}
 .genre-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
-.genre-chip{
-  padding:6px 15px;border-radius:20px;
-  background:var(--glass);border:1px solid var(--glass-border);
-  font-size:12.5px;font-weight:600;cursor:pointer;transition:all .2s;color:var(--text2);
-}
+.genre-chip{padding:6px 15px;border-radius:20px;background:var(--glass);border:1px solid var(--glass-border);font-size:12.5px;font-weight:600;cursor:pointer;transition:all .2s;color:var(--text2)}
 .genre-chip:hover{border-color:var(--accent);color:var(--accent2);background:rgba(147,51,234,.15)}
 .genre-chip.active{background:linear-gradient(135deg,var(--accent),#6d28d9);color:#fff;border-color:transparent;box-shadow:0 4px 16px rgba(147,51,234,.45)}
 
 /* SCHEDULE */
 .sched-days{display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;padding-bottom:4px}
 .sched-days::-webkit-scrollbar{display:none}
-.day-btn{
-  flex-shrink:0;padding:8px 13px;border-radius:10px;cursor:pointer;
-  text-align:center;transition:all .15s;
-  border:1px solid var(--glass-border);background:var(--glass);
-}
+.day-btn{flex-shrink:0;padding:8px 13px;border-radius:10px;cursor:pointer;text-align:center;transition:all .15s;border:1px solid var(--glass-border);background:var(--glass)}
 .day-btn .dn{font-size:9.5px;color:var(--text3);font-weight:600;margin-bottom:1px;text-transform:uppercase}
 .day-btn .dd{font-size:17px;font-weight:800;color:var(--text2)}
 .day-btn:hover{background:var(--glass-hover);border-color:var(--accent)}
 .day-btn.active{background:linear-gradient(135deg,var(--accent),#6d28d9);border-color:transparent;box-shadow:0 4px 16px rgba(147,51,234,.4)}
 .day-btn.active .dn,.day-btn.active .dd{color:#fff}
 .sched-list{display:flex;flex-direction:column;gap:7px}
-.sched-item{
-  background:var(--glass);border:1px solid var(--glass-border);
-  border-radius:var(--card-r);padding:12px;display:flex;gap:11px;align-items:center;
-  cursor:pointer;transition:all .15s;backdrop-filter:blur(8px);
-}
+.sched-item{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--card-r);padding:12px;display:flex;gap:11px;align-items:center;cursor:pointer;transition:all .15s;backdrop-filter:blur(8px)}
 .sched-item:hover{background:var(--glass-hover);border-color:rgba(192,132,252,.35)}
 .sched-time{font-size:13px;font-weight:800;color:var(--text2);width:46px;flex-shrink:0}
-.sched-thumb{width:50px;height:66px;border-radius:7px;overflow:hidden;flex-shrink:0;background:rgba(25,10,50,1);display:flex;align-items:center;justify-content:center;font-size:19px;border:1px solid var(--glass-border)}
+.sched-thumb{width:50px;height:66px;border-radius:7px;overflow:hidden;flex-shrink:0;background:rgba(25,10,50,1);display:flex;align-items:center;justify-content:center;border:1px solid var(--glass-border)}
+.sched-thumb svg{width:24px;height:24px;color:rgba(147,51,234,0.5)}
 .sched-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .sched-info{flex:1}
 .sched-title{font-size:12.5px;font-weight:700;margin-bottom:2px}
@@ -316,68 +190,63 @@ body::before{
 /* SUBSCRIBED */
 .sub-title{font-size:14px;font-weight:800;margin:16px 0 11px;color:var(--accent2)}
 
-/* PLAYER MODAL */
-.player-modal{display:none;position:fixed;inset:0;z-index:999;background:rgba(5,0,15,.97);flex-direction:column}
+/* =========== PLAYER MODAL =========== */
+.player-modal{display:none;position:fixed;inset:0;z-index:999;background:#000;flex-direction:column}
 .player-modal.open{display:flex}
-.player-topbar{
-  display:flex;align-items:center;gap:11px;padding:13px 18px;
-  background:var(--bg2);border-bottom:1px solid var(--glass-border);
-  flex-shrink:0;backdrop-filter:var(--blur);
-}
-.player-thumb{width:33px;height:33px;border-radius:6px;overflow:hidden;flex-shrink:0;background:rgba(25,10,50,1);display:flex;align-items:center;justify-content:center;font-size:15px;border:1px solid var(--glass-border)}
+.player-topbar{display:flex;align-items:center;gap:11px;padding:10px 18px;background:var(--bg2);border-bottom:1px solid var(--glass-border);flex-shrink:0;backdrop-filter:var(--blur)}
+.player-thumb{width:33px;height:33px;border-radius:6px;overflow:hidden;flex-shrink:0;background:rgba(25,10,50,1);display:flex;align-items:center;justify-content:center;border:1px solid var(--glass-border)}
+.player-thumb svg{width:18px;height:18px;color:rgba(147,51,234,0.6)}
 .player-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.player-back{
-  background:var(--glass);border:1px solid var(--glass-border);color:var(--text);
-  font-size:13.5px;font-weight:600;padding:7px 13px;border-radius:8px;
-  cursor:pointer;display:flex;align-items:center;gap:5px;font-family:inherit;
-  transition:all .15s;backdrop-filter:blur(8px);
-}
+.player-back{background:var(--glass);border:1px solid var(--glass-border);color:var(--text);font-size:13.5px;font-weight:600;padding:7px 13px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:5px;font-family:inherit;transition:all .15s;backdrop-filter:blur(8px)}
 .player-back svg{width:15px;height:15px}
 .player-back:hover{background:var(--glass-hover);border-color:var(--accent)}
 .player-title{font-size:14.5px;font-weight:800;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.player-type-badge{padding:3px 9px;border-radius:6px;font-size:10.5px;font-weight:700;flex-shrink:0}
-.badge-anime{background:rgba(147,51,234,.2);color:var(--accent2);border:1px solid rgba(147,51,234,.35)}
-.badge-donghua{background:rgba(109,40,217,.2);color:#c4b5fd;border:1px solid rgba(109,40,217,.35)}
-.player-body{flex:1;display:flex;flex-direction:column;overflow:hidden}
-.player-frame-wrap{position:relative;background:#000;flex:1}
-.player-frame-wrap iframe{width:100%;height:100%;border:none;display:block}
-.player-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;background:#000}
+.player-type-badge{padding:3px 9px;border-radius:6px;font-size:10.5px;font-weight:700;flex-shrink:0;background:rgba(147,51,234,.2);color:var(--accent2);border:1px solid rgba(147,51,234,.35)}
+
+/* Video area + info below in column layout */
+.player-body{flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0}
+.player-video-area{position:relative;background:#000;width:100%;aspect-ratio:16/9;flex-shrink:0;max-height:55vh}
+.player-video-area iframe{width:100%;height:100%;border:none;display:block}
+.player-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;background:#000;z-index:2}
 .spinner{width:42px;height:42px;border:3px solid rgba(147,51,234,.2);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.player-info{background:var(--bg2);border-top:1px solid var(--glass-border);padding:13px 18px;flex-shrink:0;backdrop-filter:var(--blur)}
-.player-info-title{font-size:13.5px;font-weight:700;margin-bottom:3px}
-.player-info-ep{font-size:11.5px;color:var(--text2);margin-bottom:9px}
-.ep-nav{display:flex;gap:7px;flex-wrap:wrap}
-.ep-btn{
-  background:var(--glass);border:1px solid var(--glass-border);
-  color:var(--text2);border-radius:7px;padding:5px 12px;font-size:11.5px;font-weight:600;
-  cursor:pointer;transition:all .15s;font-family:inherit;
-}
+
+/* Player sidebar/panel area */
+.player-panel{flex:1;overflow-y:auto;background:var(--bg2);display:flex;flex-direction:column}
+.player-info-row{padding:12px 18px 8px;border-bottom:1px solid var(--glass-border)}
+.player-info-title{font-size:14px;font-weight:800;margin-bottom:2px}
+.player-info-ep{font-size:12px;color:var(--text2);margin-bottom:8px}
+.player-source-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:0}
+.src-tab{padding:5px 12px;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;border:1px solid var(--glass-border);background:var(--glass);color:var(--text2);transition:all .15s;font-family:inherit;display:flex;align-items:center;gap:5px}
+.src-tab svg{width:12px;height:12px}
+.src-tab.active{background:linear-gradient(135deg,var(--accent),#6d28d9);color:#fff;border-color:transparent}
+.player-ep-section{padding:10px 18px 16px}
+.player-ep-label{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.ep-nav{display:flex;gap:6px;flex-wrap:wrap}
+.ep-btn{background:var(--glass);border:1px solid var(--glass-border);color:var(--text2);border-radius:7px;padding:5px 12px;font-size:11.5px;font-weight:600;cursor:pointer;transition:all .15s;font-family:inherit}
 .ep-btn:hover{background:var(--glass-hover);color:var(--text);border-color:var(--accent)}
 .ep-btn.active{background:linear-gradient(135deg,var(--accent),#6d28d9);color:#fff;border-color:transparent}
-.player-source-tabs{display:flex;gap:5px;margin-bottom:9px}
-.src-tab{padding:4px 11px;border-radius:6px;font-size:10.5px;font-weight:700;cursor:pointer;border:1px solid var(--glass-border);background:var(--glass);color:var(--text2);transition:all .15s;font-family:inherit}
-.src-tab.active{background:linear-gradient(135deg,var(--accent),#6d28d9);color:#fff;border-color:transparent}
+
+/* Wide screen: video left, panel right */
+@media(min-width:900px){
+  .player-body{flex-direction:row}
+  .player-video-area{flex:1;aspect-ratio:unset;max-height:unset;height:auto}
+  .player-panel{width:320px;flex-shrink:0;border-left:1px solid var(--glass-border)}
+}
 
 /* MOBILE NAV */
-.mobile-nav{
-  display:none;position:fixed;bottom:0;left:0;right:0;
-  background:var(--bg2);border-top:1px solid var(--glass-border);
-  backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
-  z-index:200;padding:6px 0 calc(6px + env(safe-area-inset-bottom));
-  box-shadow:0 -4px 24px rgba(0,0,0,.4);
-}
+.mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px solid var(--glass-border);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);z-index:200;padding:6px 0 calc(6px + env(safe-area-inset-bottom));box-shadow:0 -4px 24px rgba(0,0,0,.4)}
 .mnav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:5px;color:var(--text3);font-size:10px;font-weight:600;transition:color .15s}
 .mnav-item svg{width:20px;height:20px}
 .mnav-item.active{color:var(--accent2)}
 
-/* LOADING / EMPTY */
-.loading-state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 20px;gap:11px;color:var(--text2);font-size:13px}
-.empty-state{text-align:center;padding:44px 20px;color:var(--text3)}
-.empty-icon{font-size:38px;margin-bottom:9px}
+/* EMPTY/LOADING */
+.loading-state,.empty-state{text-align:center;padding:44px 20px;color:var(--text3)}
+.empty-icon{margin-bottom:12px;display:flex;justify-content:center}
+.empty-icon svg{width:48px;height:48px;color:rgba(147,51,234,0.35)}
 .empty-text{font-size:13.5px;font-weight:600}
 
-/* Rank badge on popular */
+/* Rank badge */
 .card-rank{position:absolute;bottom:7px;right:7px;background:linear-gradient(135deg,var(--accent),#6d28d9);color:#fff;font-size:10px;font-weight:800;border-radius:5px;padding:2px 7px;backdrop-filter:blur(6px)}
 
 @media(max-width:900px){
@@ -393,7 +262,9 @@ body::before{
 <!-- SIDEBAR -->
 <nav class="sidebar">
   <div class="logo" onclick="showPage('home')">
-    <div class="logo-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>
+    <div class="logo-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+    </div>
     <span class="logo-ton">ton</span><span class="logo-ime">ime</span><sup class="logo-bang">!</sup>
   </div>
   <div class="nav-section-label">Menu</div>
@@ -422,10 +293,11 @@ body::before{
     <div class="nav-item" onclick="openGenre('Fantasy')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Fantasy</div>
     <div class="nav-item" onclick="openGenre('Isekai')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg> Isekai</div>
     <div class="nav-item" onclick="openGenre('Comedy')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 13s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg> Comedy</div>
-    <div class="nav-item" onclick="openGenre('Horror')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L8 7H2l4.5 4L4 17h8l8-8-2-5z"/><circle cx="12" cy="15" r="1"/></svg> Horror</div>
+    <div class="nav-item" onclick="openGenre('Horror')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 0 1 5 5c0 2-1 3.5-2.5 4.5V14h-5v-2.5C8 10.5 7 9 7 7a5 5 0 0 1 5-5z"/><path d="M9 14v2l-2 4h10l-2-4v-2"/></svg> Horror</div>
     <div class="nav-item" onclick="openGenre('Slice of Life')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Slice of Life</div>
     <div class="nav-item" onclick="openGenre('Supernatural')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Supernatural</div>
-    <div class="nav-item" onclick="openGenre('Donghua')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/><path d="M12 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg> Donghua</div>
+    <div class="nav-item" onclick="openGenre('Sports')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M4.93 4.93l4.24 4.24"/><path d="M14.83 9.17l4.24-4.24"/><path d="M14.83 14.83l4.24 4.24"/><path d="M9.17 14.83l-4.24 4.24"/><circle cx="12" cy="12" r="4"/></svg> Sports</div>
+    <div class="nav-item" onclick="openGenre('Mecha')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Mecha</div>
   </div>
   <div class="nav-item" onclick="showPage('search')" data-page="search">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -447,19 +319,15 @@ body::before{
       </button>
       <div class="notif-btn">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-        <div class="notif-badge">11</div>
+        <div class="notif-badge">5</div>
       </div>
     </div>
   </div>
 
-  <!-- HOME -->
+  <!-- HOME PAGE -->
   <div id="page-home" class="page active">
-
-    <!-- HERO SLIDER -->
     <div class="hero-slider-wrap">
-      <div class="hero-slides" id="heroSlides">
-        <!-- Populated by JS -->
-      </div>
+      <div class="hero-slides" id="heroSlides"></div>
       <div class="slider-arrow prev" onclick="prevSlide()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
       </div>
@@ -483,20 +351,6 @@ body::before{
       <div class="hscroll" id="newUpdateList"></div>
     </div>
 
-    <!-- Donghua -->
-    <div class="section">
-      <div class="section-header">
-        <div class="section-title">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/><path d="M12 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4"/></svg>
-          <strong>Donghua</strong> Terbaru
-        </div>
-        <span class="sec-link" onclick="openGenre('Donghua')">Lihat Semua
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </span>
-      </div>
-      <div class="hscroll" id="donghuaList"></div>
-    </div>
-
     <!-- Popular -->
     <div class="section">
       <div class="section-header">
@@ -509,6 +363,34 @@ body::before{
         </span>
       </div>
       <div class="anime-grid" id="popularGrid"></div>
+    </div>
+
+    <!-- Ongoing Section -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <strong>Ongoing</strong> Anime
+        </div>
+        <span class="sec-link" onclick="showPage('genre')">Lihat Semua
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </div>
+      <div class="hscroll" id="ongoingList"></div>
+    </div>
+
+    <!-- Completed -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <strong>Completed</strong> Anime
+        </div>
+        <span class="sec-link" onclick="showPage('genre')">Lihat Semua
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </div>
+      <div class="hscroll" id="completedList"></div>
     </div>
   </div>
 
@@ -534,10 +416,13 @@ body::before{
     <h2 style="font-size:19px;font-weight:900;margin-bottom:15px">Cari Anime</h2>
     <div class="search-wrap" style="max-width:100%;margin-bottom:20px">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;color:var(--text3);flex-shrink:0"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" placeholder="Nama anime, genre, tahun..." id="searchInput2" oninput="handleSearch(this.value)" style="background:none;border:none;outline:none;color:var(--text);font-size:13.5px;padding:10px 0;flex:1;font-family:inherit">
+      <input type="text" placeholder="Nama anime, genre..." id="searchInput2" oninput="handleSearch(this.value)" style="background:none;border:none;outline:none;color:var(--text);font-size:13.5px;padding:10px 0;flex:1;font-family:inherit">
     </div>
     <div id="searchResults">
-      <div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-text">Ketik nama anime untuk mencari</div></div>
+      <div class="empty-state">
+        <div class="empty-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <div class="empty-text">Ketik nama anime untuk mencari</div>
+      </div>
     </div>
   </div>
 
@@ -551,33 +436,11 @@ body::before{
   <!-- SUBSCRIBED -->
   <div id="page-subscribed" class="page">
     <h2 style="font-size:19px;font-weight:900;margin-bottom:14px">Subscribed Anime</h2>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-      <span style="font-size:13.5px;color:var(--text2)">Total (7)</span>
-      <button class="tb-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        New Update
-      </button>
-    </div>
-    <div class="sub-title">Ongoing (2)</div>
-    <div class="hscroll">
-      <div class="anime-card card-lg" onclick="openPlayer({title:'Koori no Jouheki',type:'anime',slug:'koori-no-jouheki',totalEps:13,curEp:13,emoji:'❄️',views:'86.1K',rating:'7.02'})">
-        <div class="card-img" style="height:240px"><div class="card-ph" data-cover-title="Koori no Jouheki" style="background:linear-gradient(135deg,#1c1c2e,#2d2d44)">❄️</div><div class="card-rating"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" style="width:11px;height:11px;color:#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 7.02</div><div class="card-ep">Eps 13</div></div>
-        <div class="card-body"><div class="card-views"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 86.1K views</div><div class="card-title">Koori no Jouheki</div></div>
-      </div>
-      <div class="anime-card card-lg" onclick="openPlayer({title:'Tsue to Tsurugi no Wistoria Season 2',type:'anime',slug:'tsue-to-tsurugi-no-wistoria-s2',totalEps:11,curEp:11,emoji:'🌀',views:'734.7K',rating:'7.18'})">
-        <div class="card-img" style="height:240px"><div class="card-ph" data-cover-title="Tsue to Tsurugi no Wistoria" style="background:linear-gradient(135deg,#4c1d95,#5b21b6)">🌀</div><div class="card-rating"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" style="width:11px;height:11px;color:#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 7.18</div><div class="card-ep">Eps 11</div></div>
-        <div class="card-body"><div class="card-views"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 734.7K views</div><div class="card-title">Tsue to Tsurugi no Wistoria S2</div></div>
-      </div>
-    </div>
-    <div class="sub-title">Completed (5)</div>
-    <div class="anime-grid">
-      <div class="anime-card" onclick="openPlayer({title:'Seihantai na Kimi to Boku',type:'anime',slug:'seihantai-na-kimi-to-boku',totalEps:12,curEp:12,emoji:'🌹',views:'160.6K',rating:'7.87'})"><div class="card-img"><div class="card-ph" data-cover-title="Seihantai na Kimi to Boku" style="background:linear-gradient(135deg,#7f1d1d,#991b1b)">🌹</div><div class="card-rating"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" style="width:11px;height:11px;color:#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 7.87</div><div class="card-ep">Eps 12</div></div><div class="card-body"><div class="card-views"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 160.6K</div><div class="card-title">Seihantai na Kimi to Boku</div></div></div>
-      <div class="anime-card" onclick="openPlayer({title:'Odayaka Kizoku no Kyuuka no Susume',type:'anime',slug:'odayaka-kizoku',totalEps:12,curEp:12,emoji:'🏛️',views:'41.3K',rating:'6.68'})"><div class="card-img"><div class="card-ph" data-cover-title="Odayaka Kizoku no Kyuuka no Susume" style="background:linear-gradient(135deg,#1e3a5f,#1e40af)">🏛️</div><div class="card-rating"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" style="width:11px;height:11px;color:#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 6.68</div><div class="card-ep">Eps 12</div></div><div class="card-body"><div class="card-views"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 41.3K</div><div class="card-title">Odayaka Kizoku no Kyuuka</div></div></div>
-      <div class="anime-card" onclick="openPlayer({title:'Isekai Shikkaku',type:'anime',slug:'isekai-shikkaku',totalEps:12,curEp:12,emoji:'🌿',views:'240.8K',rating:'7.08'})"><div class="card-img"><div class="card-ph" data-cover-title="Isekai Shikkaku" style="background:linear-gradient(135deg,#064e3b,#065f46)">🌿</div><div class="card-rating"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" style="width:11px;height:11px;color:#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 7.08</div><div class="card-ep">Eps 12</div></div><div class="card-body"><div class="card-views"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 240.8K</div><div class="card-title">Isekai Shikkaku</div></div></div>
-      <div class="anime-card" onclick="openPlayer({title:'Shiro Seijo to Kuro Bokushi',type:'anime',slug:'shiro-seijo-kuro-bokushi',totalEps:12,curEp:12,emoji:'⛪',views:'73.2K',rating:'7.30'})"><div class="card-img"><div class="card-ph" data-cover-title="Shiro Seijo to Kuro Bokushi" style="background:linear-gradient(135deg,#5b21b6,#6d28d9)">✨</div><div class="card-rating"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" style="width:11px;height:11px;color:#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 7.30</div><div class="card-ep">Eps 12</div></div><div class="card-body"><div class="card-views"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 73.2K</div><div class="card-title">Shiro Seijo to Kuro Bokushi</div></div></div>
-    </div>
+    <div class="sub-title">Ongoing (3)</div>
+    <div class="hscroll" id="subOngoingList"></div>
+    <div class="sub-title">Completed (4)</div>
+    <div class="anime-grid" id="subCompletedGrid"></div>
   </div>
-
 </div><!-- /main -->
 
 <!-- MOBILE NAV -->
@@ -594,6 +457,10 @@ body::before{
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
     Genre
   </div>
+  <div class="mnav-item" onclick="showPage('search')" data-mpage="search">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    Cari
+  </div>
   <div class="mnav-item" onclick="showPage('subscribed')" data-mpage="subscribed">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
     Subscribed
@@ -607,214 +474,233 @@ body::before{
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
       Kembali
     </button>
-    <div class="player-thumb" id="playerThumb">🎬</div>
+    <div class="player-thumb" id="playerThumb">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+    </div>
     <div class="player-title" id="playerTitle">Memuat...</div>
     <div class="player-type-badge" id="playerTypeBadge">Anime</div>
   </div>
   <div class="player-body">
-    <div class="player-frame-wrap" id="playerFrameWrap">
+    <div class="player-video-area" id="playerFrameWrap">
       <div class="player-loading" id="playerLoading">
         <div class="spinner"></div>
-        <div style="color:var(--text2);font-size:13px">Memuat video...</div>
+        <div style="color:var(--text2);font-size:13px;margin-top:4px">Memuat video...</div>
+        <div style="color:var(--text3);font-size:11px;margin-top:6px;text-align:center;max-width:260px">Jika video tidak muncul, coba ganti sumber di bawah</div>
       </div>
-      <iframe id="playerFrame" allowfullscreen scrolling="no" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+      <iframe id="playerFrame" allowfullscreen allow="autoplay; fullscreen" referrerpolicy="no-referrer" style="width:100%;height:100%;border:none;display:block;opacity:0"></iframe>
     </div>
-    <div class="player-info">
-      <div class="player-info-title" id="playerInfoTitle"></div>
-      <div class="player-info-ep" id="playerInfoEp"></div>
-      <div class="player-source-tabs" id="playerSourceTabs"></div>
-      <div class="ep-nav" id="playerEpNav"></div>
+    <div class="player-panel">
+      <div class="player-info-row">
+        <div class="player-info-title" id="playerInfoTitle"></div>
+        <div class="player-info-ep" id="playerInfoEp"></div>
+        <div class="player-source-tabs" id="playerSourceTabs"></div>
+      </div>
+      <div class="player-ep-section">
+        <div class="player-ep-label">Pilih Episode</div>
+        <div class="ep-nav" id="playerEpNav"></div>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
-// ===================== DATA =====================
+// ===================== ANIME DATA =====================
 const ANIME_DATA = [
-  {title:'Kimetsu no Yaiba Season 4',slug:'kimetsu-no-yaiba-s4',type:'anime',emoji:'🌊',views:'1.2M',viewsNum:1200000,rating:'8.71',totalEps:12,genres:['Action','Supernatural'],isNew:true},
-  {title:'Youkoso Jitsuryoku Shijou Shugi S3',slug:'classroom-of-the-elite-s3',type:'anime',emoji:'🏫',views:'542.0K',viewsNum:542000,rating:'8.12',totalEps:13,genres:['Action','Romance','Slice of Life'],isNew:true},
-  {title:'Tsue to Tsurugi no Wistoria S2',slug:'tsue-to-tsurugi-no-wistoria-s2',type:'anime',emoji:'🌀',views:'734.7K',viewsNum:734700,rating:'7.18',totalEps:11,genres:['Action','Fantasy'],isNew:true},
-  {title:'The Beginning After the End S2',slug:'the-beginning-after-the-end-season-2',type:'anime',emoji:'⚔️',views:'378.0K',viewsNum:378000,rating:'8.24',totalEps:12,genres:['Action','Fantasy','Isekai'],isNew:true},
-  {title:'Tensei shitara Slime Datta Ken S3',slug:'tensei-slime-s3',type:'anime',emoji:'💧',views:'394.2K',viewsNum:394200,rating:'7.69',totalEps:12,genres:['Action','Fantasy','Isekai'],isNew:true},
-  {title:'Isekai Shikkaku',slug:'isekai-shikkaku',type:'anime',emoji:'🌿',views:'240.8K',viewsNum:240800,rating:'7.08',totalEps:12,genres:['Action','Isekai']},
-  {title:'Seihantai na Kimi to Boku',slug:'seihantai-na-kimi-to-boku',type:'anime',emoji:'🌹',views:'160.6K',viewsNum:160600,rating:'7.87',totalEps:12,genres:['Romance','Comedy','Slice of Life']},
-  {title:'Yozakura-san Chi no Daisakusen',slug:'yozakura-daisakusen',type:'anime',emoji:'🌺',views:'93.3K',viewsNum:93300,rating:'7.60',totalEps:11,genres:['Action','Comedy','Romance']},
-  {title:'Koori no Jouheki',slug:'koori-no-jouheki',type:'anime',emoji:'❄️',views:'86.1K',viewsNum:86100,rating:'7.02',totalEps:13,genres:['Action','Fantasy']},
-  {title:'Mairimashita! Iruma-kun Season 3',slug:'mairimashita-iruma-kun-s3',type:'anime',emoji:'🎪',views:'33.3K',viewsNum:33300,rating:'7.33',totalEps:13,genres:['Comedy','Fantasy','Supernatural'],isNew:true},
-  {title:'Kamiina Botan, Yoeru Sugata wa',slug:'kamiina-botan',type:'anime',emoji:'🌸',views:'21.1K',viewsNum:21100,rating:'7.43',totalEps:12,genres:['Romance','Slice of Life'],isNew:true},
-  {title:'Honzuki no Gekokujou Season 4',slug:'honzuki-no-gekokujou-s4',type:'anime',emoji:'📚',views:'15.1K',viewsNum:15100,rating:'7.39',totalEps:12,genres:['Fantasy','Isekai','Slice of Life'],isNew:true},
-  {title:'Reincarnation no Kaben',slug:'reincarnation-no-kaben',type:'anime',emoji:'💀',views:'44.5K',viewsNum:44500,rating:'6.60',totalEps:13,genres:['Action','Horror','Supernatural']},
-  {title:'Odayaka Kizoku no Kyuuka',slug:'odayaka-kizoku',type:'anime',emoji:'🏛️',views:'41.3K',viewsNum:41300,rating:'6.68',totalEps:12,genres:['Fantasy','Slice of Life']},
-  {title:'Shunkashuutou Daikousha',slug:'shunkashuutou-daikousha',type:'anime',emoji:'🔮',views:'29.0K',viewsNum:29000,rating:'7.64',totalEps:13,genres:['Romance','Supernatural']},
-  {title:'Nippon Sangoku',slug:'nippon-sangoku',type:'anime',emoji:'🗡️',views:'47.3K',viewsNum:47300,rating:'7.40',totalEps:12,genres:['Action']},
-  // DONGHUA
-  {title:'Soul Land IV',slug:'soul-land-iv',type:'donghua',emoji:'💎',views:'412.1K',viewsNum:412100,rating:'8.55',totalEps:60,genres:['Action','Fantasy','Donghua']},
-  {title:'Douluo Dalu Season 3',slug:'douluo-dalu-s3',type:'donghua',emoji:'🔥',views:'340.8K',viewsNum:340800,rating:'8.33',totalEps:48,genres:['Action','Fantasy','Romance','Donghua']},
-  {title:'Quanzhi Fashi Season 6',slug:'quanzhi-fashi-s6',type:'donghua',emoji:'🐉',views:'280.5K',viewsNum:280500,rating:'8.10',totalEps:24,genres:['Action','Fantasy','Donghua'],isNew:true},
-  {title:'Wu Dong Qian Kun',slug:'wu-dong-qian-kun',type:'donghub',emoji:'⚡',views:'195.3K',viewsNum:195300,rating:'7.92',totalEps:36,genres:['Action','Fantasy','Donghua'],isNew:true},
-  {title:'Versatile Mage',slug:'versatile-mage',type:'donghub',emoji:'🌙',views:'156.7K',viewsNum:156700,rating:'7.78',totalEps:48,genres:['Action','Fantasy','Isekai','Donghua']},
+  // === ONGOING (isNew + ongoing) ===
+  {title:'Kimetsu no Yaiba Season 4',slug:'kimetsu-no-yaiba-season-4',otakuSlug:'kimetsu-no-yaiba-season-4',type:'anime',views:'1.2M',viewsNum:1200000,rating:'8.71',totalEps:21,genres:['Action','Supernatural'],isNew:true,status:'ongoing'},
+  {title:'Youkoso Jitsuryoku Shijou Shugi S3',slug:'you-zitsu-season-3',otakuSlug:'youkoso-jitsuryoku-shijou-shugi-no-kyoushitsu-e-season-3',type:'anime',views:'542.0K',viewsNum:542000,rating:'8.12',totalEps:13,genres:['Action','Romance','Slice of Life'],isNew:true,status:'ongoing'},
+  {title:'Tsue to Tsurugi no Wistoria S2',slug:'wistoria-wand-and-sword-season-2',otakuSlug:'tsue-to-tsurugi-no-wistoria-season-2',type:'anime',views:'734.7K',viewsNum:734700,rating:'7.18',totalEps:12,genres:['Action','Fantasy'],isNew:true,status:'ongoing'},
+  {title:'The Beginning After the End S2',slug:'the-beginning-after-the-end-season-2',otakuSlug:'the-beginning-after-the-end-season-2',type:'anime',views:'820.0K',viewsNum:820000,rating:'8.24',totalEps:13,genres:['Action','Fantasy','Isekai'],isNew:true,status:'ongoing'},
+  {title:'Tensei shitara Slime Datta Ken S3',slug:'tensura-season-3',otakuSlug:'tensei-shitara-slime-datta-ken-season-3',type:'anime',views:'394.2K',viewsNum:394200,rating:'7.69',totalEps:24,genres:['Action','Fantasy','Isekai'],isNew:true,status:'ongoing'},
+  {title:'Mairimashita! Iruma-kun S4',slug:'mairimashita-iruma-kun-season-4',otakuSlug:'mairimashita-iruma-kun-season-4',type:'anime',views:'180.3K',viewsNum:180300,rating:'7.33',totalEps:24,genres:['Comedy','Fantasy','Supernatural'],isNew:true,status:'ongoing'},
+  {title:'Kamiina Botan, Yoeru Sugata wa',slug:'kamiina-botan',otakuSlug:'kamiina-botan-yoeru-sugata-wa-yoru-ni-naku',type:'anime',views:'21.1K',viewsNum:21100,rating:'7.43',totalEps:12,genres:['Romance','Slice of Life'],isNew:true,status:'ongoing'},
+  {title:'Honzuki no Gekokujou Season 4',slug:'ascendance-of-a-bookworm-season-4',otakuSlug:'honzuki-no-gekokujou-shisho-ni-naru-tame-ni-wa-shudan-wo-erandeiraremasen-season-4',type:'anime',views:'95.1K',viewsNum:95100,rating:'7.39',totalEps:12,genres:['Fantasy','Isekai','Slice of Life'],isNew:true,status:'ongoing'},
+  {title:'Shunkashuutou Daikousha',slug:'shunkashuutou-daikousha',otakuSlug:'shunkashuutou-daikousha',type:'anime',views:'29.0K',viewsNum:29000,rating:'7.64',totalEps:13,genres:['Romance','Supernatural'],isNew:true,status:'ongoing'},
+  {title:'Koori no Jouheki',slug:'koori-no-jouheki',otakuSlug:'koori-no-jouheki',type:'anime',views:'86.1K',viewsNum:86100,rating:'7.02',totalEps:13,genres:['Action','Fantasy'],isNew:true,status:'ongoing'},
+  {title:'Yozakura-san Chi no Daisakusen',slug:'mission-yozakura-family',otakuSlug:'yozakura-san-chi-no-daisakusen',type:'anime',views:'93.3K',viewsNum:93300,rating:'7.60',totalEps:13,genres:['Action','Comedy','Romance'],isNew:true,status:'ongoing'},
+  {title:'Nippon Sangoku',slug:'nippon-sangoku',otakuSlug:'nippon-sangoku',type:'anime',views:'47.3K',viewsNum:47300,rating:'7.40',totalEps:12,genres:['Action'],isNew:true,status:'ongoing'},
+  {title:'Re:Zero kara Hajimeru Isekai Seikatsu S3',slug:'re-zero-season-3',otakuSlug:'re-zero-kara-hajimeru-isekai-seikatsu-season-3',type:'anime',views:'910.0K',viewsNum:910000,rating:'8.55',totalEps:25,genres:['Action','Fantasy','Isekai'],isNew:true,status:'ongoing'},
+  {title:'Sword Art Online: Alicization',slug:'sword-art-online-alicization',otakuSlug:'sword-art-online-alicization',type:'anime',views:'1.05M',viewsNum:1050000,rating:'7.72',totalEps:48,genres:['Action','Fantasy','Romance'],status:'ongoing'},
+  {title:'Attack on Titan Final Season Part 3',slug:'shingeki-no-kyojin-final-season-part-3',otakuSlug:'shingeki-no-kyojin-final-season-part-3',type:'anime',views:'2.1M',viewsNum:2100000,rating:'9.08',totalEps:11,genres:['Action','Horror','Supernatural'],isNew:true,status:'ongoing'},
+  // === COMPLETED ===
+  {title:'Isekai Shikkaku',slug:'isekai-shikkaku',otakuSlug:'isekai-shikkaku',type:'anime',views:'240.8K',viewsNum:240800,rating:'7.08',totalEps:12,genres:['Action','Isekai'],status:'completed'},
+  {title:'Seihantai na Kimi to Boku',slug:'seihantai-na-kimi-to-boku',otakuSlug:'seihantai-na-kimi-to-boku',type:'anime',views:'160.6K',viewsNum:160600,rating:'7.87',totalEps:12,genres:['Romance','Comedy','Slice of Life'],status:'completed'},
+  {title:'Odayaka Kizoku no Kyuuka no Susume',slug:'odayaka-kizoku',otakuSlug:'odayaka-kizoku-no-kyuuka-no-susume',type:'anime',views:'41.3K',viewsNum:41300,rating:'6.68',totalEps:12,genres:['Fantasy','Slice of Life'],status:'completed'},
+  {title:'Reincarnation no Kaben',slug:'reincarnation-no-kaben',otakuSlug:'reincarnation-no-kaben',type:'anime',views:'44.5K',viewsNum:44500,rating:'6.60',totalEps:13,genres:['Action','Horror','Supernatural'],status:'completed'},
+  {title:'Shiro Seijo to Kuro Bokushi',slug:'shiro-seijo-to-kuro-bokushi',otakuSlug:'shiro-seijo-to-kuro-bokushi',type:'anime',views:'73.2K',viewsNum:73200,rating:'7.30',totalEps:12,genres:['Fantasy','Romance'],status:'completed'},
+  {title:'Frieren: Beyond Journey End',slug:'sousou-no-frieren',otakuSlug:'sousou-no-frieren',type:'anime',views:'1.8M',viewsNum:1800000,rating:'9.12',totalEps:28,genres:['Action','Fantasy','Slice of Life'],status:'completed'},
+  {title:'Jujutsu Kaisen Season 2',slug:'jujutsu-kaisen-season-2',otakuSlug:'jujutsu-kaisen-season-2',type:'anime',views:'2.3M',viewsNum:2300000,rating:'8.64',totalEps:23,genres:['Action','Supernatural'],status:'completed'},
+  {title:'Vinland Saga Season 2',slug:'vinland-saga-season-2',otakuSlug:'vinland-saga-season-2',type:'anime',views:'890.0K',viewsNum:890000,rating:'9.01',totalEps:24,genres:['Action','Slice of Life'],status:'completed'},
+  {title:'Spy x Family Season 2',slug:'spy-x-family-season-2',otakuSlug:'spy-x-family-season-2',type:'anime',views:'1.1M',viewsNum:1100000,rating:'8.01',totalEps:12,genres:['Action','Comedy','Romance'],status:'completed'},
+  {title:'Blue Lock Season 2',slug:'blue-lock-season-2',otakuSlug:'blue-lock-season-2',type:'anime',views:'980.0K',viewsNum:980000,rating:'8.22',totalEps:20,genres:['Sports','Action'],isNew:true,status:'completed'},
+  {title:'Chainsaw Man',slug:'chainsaw-man',otakuSlug:'chainsaw-man',type:'anime',views:'1.5M',viewsNum:1500000,rating:'8.55',totalEps:12,genres:['Action','Horror','Supernatural'],status:'completed'},
+  {title:'Oshi no Ko Season 2',slug:'oshi-no-ko-season-2',otakuSlug:'oshi-no-ko-season-2',type:'anime',views:'750.0K',viewsNum:750000,rating:'8.31',totalEps:13,genres:['Romance','Slice of Life','Supernatural'],status:'completed'},
+  {title:'Dungeon Meshi',slug:'dungeon-meshi',otakuSlug:'dungeon-meshi',type:'anime',views:'1.2M',viewsNum:1200000,rating:'8.70',totalEps:24,genres:['Action','Fantasy','Comedy'],status:'completed'},
+  {title:'Mushoku Tensei Season 2',slug:'mushoku-tensei-season-2',otakuSlug:'mushoku-tensei-isekai-ittara-honki-dasu-season-2',type:'anime',views:'850.0K',viewsNum:850000,rating:'8.17',totalEps:24,genres:['Action','Fantasy','Isekai','Romance'],status:'completed'},
+  {title:'The Eminence in Shadow Season 2',slug:'kage-no-jitsuryokusha-ni-naritakute-season-2',otakuSlug:'kage-no-jitsuryokusha-ni-naritakute-season-2',type:'anime',views:'670.0K',viewsNum:670000,rating:'7.96',totalEps:12,genres:['Action','Fantasy','Isekai','Comedy'],status:'completed'},
+  {title:'One Piece (2024)',slug:'one-piece',otakuSlug:'one-piece',type:'anime',views:'3.2M',viewsNum:3200000,rating:'8.72',totalEps:1122,genres:['Action','Fantasy','Comedy'],status:'ongoing'},
+  {title:'Naruto Shippuden',slug:'naruto-shippuden',otakuSlug:'naruto-shippuden',type:'anime',views:'4.5M',viewsNum:4500000,rating:'8.66',totalEps:500,genres:['Action','Supernatural'],status:'completed'},
+  {title:'Solo Leveling',slug:'solo-leveling',otakuSlug:'solo-leveling',type:'anime',views:'1.9M',viewsNum:1900000,rating:'8.51',totalEps:12,genres:['Action','Fantasy'],status:'completed'},
 ];
 
-const GENRES = ['Action','Romance','Fantasy','Isekai','Comedy','Horror','Slice of Life','Sports','Mecha','Supernatural','Donghua'];
+const GENRES = ['Action','Romance','Fantasy','Isekai','Comedy','Horror','Slice of Life','Sports','Mecha','Supernatural'];
+const DAYNAMES = ['Min','Sen','Sel','Rab','Kam','Jum','Sab'];
 
 const SCHED_DATA = {
   0:[
-    {time:'23:13',emoji:'🗡️',title:'Nippon Sangoku',ep:'Episode 12',views:'47.3K',rating:'7.40',slug:'nippon-sangoku',type:'anime',totalEps:12},
-    {time:'17:53',emoji:'🔮',title:'Shunkashuutou Daikousha',ep:'Episode 13',views:'29.0K',rating:'7.64',slug:'shunkashuutou-daikousha',type:'anime',totalEps:13},
-    {time:'17:49',emoji:'🌀',title:'Tsue to Tsurugi no Wistoria S2',ep:'Episode 11',views:'734.7K',rating:'7.18',slug:'tsue-to-tsurugi-no-wistoria-s2',type:'anime',totalEps:11},
-    {time:'17:09',emoji:'🌺',title:'Yozakura-san Chi no Daisakusen',ep:'Episode 11',views:'93.3K',rating:'7.60',slug:'yozakura-daisakusen',type:'anime',totalEps:11},
+    {title:'Nippon Sangoku',ep:'Episode 12',views:'47.3K',rating:'7.40',slug:'nippon-sangoku',otakuSlug:'nippon-sangoku',type:'anime',totalEps:12,time:'23:13'},
+    {title:'Shunkashuutou Daikousha',ep:'Episode 13',views:'29.0K',rating:'7.64',slug:'shunkashuutou-daikousha',otakuSlug:'shunkashuutou-daikousha',type:'anime',totalEps:13,time:'17:53'},
+    {title:'Tsue to Tsurugi no Wistoria S2',ep:'Episode 11',views:'734.7K',rating:'7.18',slug:'wistoria-wand-and-sword-season-2',otakuSlug:'tsue-to-tsurugi-no-wistoria-season-2',type:'anime',totalEps:12,time:'17:49'},
+    {title:'Yozakura-san Chi no Daisakusen',ep:'Episode 11',views:'93.3K',rating:'7.60',slug:'mission-yozakura-family',otakuSlug:'yozakura-san-chi-no-daisakusen',type:'anime',totalEps:13,time:'17:09'},
   ],
   1:[
-    {time:'18:30',emoji:'🌊',title:'Kimetsu no Yaiba Season 4',ep:'Episode 9',views:'1.2M',rating:'8.71',slug:'kimetsu-no-yaiba-s4',type:'anime',totalEps:12},
-    {time:'16:00',emoji:'🏫',title:'Youkoso Jitsuryoku Shijou Shugi S3',ep:'Episode 6',views:'542K',rating:'8.12',slug:'classroom-of-the-elite-s3',type:'anime',totalEps:13},
-    {time:'14:30',emoji:'🎪',title:'Mairimashita! Iruma-kun S3',ep:'Episode 14',views:'33.3K',rating:'7.33',slug:'mairimashita-iruma-kun-s3',type:'anime',totalEps:13},
+    {title:'Kimetsu no Yaiba Season 4',ep:'Episode 9',views:'1.2M',rating:'8.71',slug:'kimetsu-no-yaiba-season-4',otakuSlug:'kimetsu-no-yaiba-season-4',type:'anime',totalEps:21,time:'18:30'},
+    {title:'Youkoso Jitsuryoku Shijou Shugi S3',ep:'Episode 6',views:'542K',rating:'8.12',slug:'you-zitsu-season-3',otakuSlug:'youkoso-jitsuryoku-shijou-shugi-no-kyoushitsu-e-season-3',type:'anime',totalEps:13,time:'16:00'},
+    {title:'Re:Zero Season 3',ep:'Episode 20',views:'910K',rating:'8.55',slug:'re-zero-season-3',otakuSlug:'re-zero-kara-hajimeru-isekai-seikatsu-season-3',type:'anime',totalEps:25,time:'14:30'},
   ],
   2:[
-    {time:'20:00',emoji:'🌹',title:'Seihantai na Kimi to Boku',ep:'Episode 13',views:'160.6K',rating:'7.87',slug:'seihantai-na-kimi-to-boku',type:'anime',totalEps:12},
-    {time:'17:00',emoji:'❄️',title:'Koori no Jouheki',ep:'Episode 14',views:'86.1K',rating:'7.02',slug:'koori-no-jouheki',type:'anime',totalEps:13},
+    {title:'Seihantai na Kimi to Boku',ep:'Episode 13',views:'160.6K',rating:'7.87',slug:'seihantai-na-kimi-to-boku',otakuSlug:'seihantai-na-kimi-to-boku',type:'anime',totalEps:12,time:'20:00'},
+    {title:'Koori no Jouheki',ep:'Episode 14',views:'86.1K',rating:'7.02',slug:'koori-no-jouheki',otakuSlug:'koori-no-jouheki',type:'anime',totalEps:13,time:'17:00'},
+    {title:'Blue Lock Season 2',ep:'Episode 18',views:'980K',rating:'8.22',slug:'blue-lock-season-2',otakuSlug:'blue-lock-season-2',type:'anime',totalEps:20,time:'13:00'},
   ],
   3:[
-    {time:'22:00',emoji:'💀',title:'Reincarnation no Kaben',ep:'Episode 14',views:'44.5K',rating:'6.60',slug:'reincarnation-no-kaben',type:'anime',totalEps:13},
-    {time:'19:30',emoji:'📚',title:'Honzuki no Gekokujou S4',ep:'Episode 13',views:'15.1K',rating:'7.39',slug:'honzuki-no-gekokujou-s4',type:'anime',totalEps:12},
-    {time:'14:00',emoji:'🐉',title:'Quanzhi Fashi S6',ep:'Episode 20',views:'280.5K',rating:'8.10',slug:'quanzhi-fashi-s6',type:'donghua',totalEps:24},
+    {title:'Reincarnation no Kaben',ep:'Episode 14',views:'44.5K',rating:'6.60',slug:'reincarnation-no-kaben',otakuSlug:'reincarnation-no-kaben',type:'anime',totalEps:13,time:'22:00'},
+    {title:'Honzuki no Gekokujou S4',ep:'Episode 13',views:'95.1K',rating:'7.39',slug:'ascendance-of-a-bookworm-season-4',otakuSlug:'honzuki-no-gekokujou-shisho-ni-naru-tame-ni-wa-shudan-wo-erandeiraremasen-season-4',type:'anime',totalEps:12,time:'19:30'},
+    {title:'Tensei Slime S3',ep:'Episode 22',views:'394.2K',rating:'7.69',slug:'tensura-season-3',otakuSlug:'tensei-shitara-slime-datta-ken-season-3',type:'anime',totalEps:24,time:'14:00'},
   ],
   4:[
-    {time:'21:00',emoji:'🌀',title:'Tsue to Tsurugi no Wistoria S2',ep:'Episode 12',views:'734.7K',rating:'7.18',slug:'tsue-to-tsurugi-no-wistoria-s2',type:'anime',totalEps:11},
-    {time:'16:30',emoji:'⚡',title:'Wu Dong Qian Kun',ep:'Episode 32',views:'195.3K',rating:'7.92',slug:'wu-dong-qian-kun',type:'donghub',totalEps:36},
+    {title:'The Beginning After the End S2',ep:'Episode 13',views:'820K',rating:'8.24',slug:'the-beginning-after-the-end-season-2',otakuSlug:'the-beginning-after-the-end-season-2',type:'anime',totalEps:13,time:'21:00'},
+    {title:'Mairimashita! Iruma-kun S4',ep:'Episode 20',views:'180.3K',rating:'7.33',slug:'mairimashita-iruma-kun-season-4',otakuSlug:'mairimashita-iruma-kun-season-4',type:'anime',totalEps:24,time:'16:30'},
   ],
   5:[
-    {time:'18:00',emoji:'🌸',title:'Kamiina Botan, Yoeru Sugata wa',ep:'Episode 13',views:'21.1K',rating:'7.43',slug:'kamiina-botan',type:'anime',totalEps:12},
-    {time:'16:00',emoji:'🔥',title:'Douluo Dalu Season 3',ep:'Episode 45',views:'340.8K',rating:'8.33',slug:'douluo-dalu-s3',type:'donghua',totalEps:48},
+    {title:'Kamiina Botan',ep:'Episode 13',views:'21.1K',rating:'7.43',slug:'kamiina-botan',otakuSlug:'kamiina-botan-yoeru-sugata-wa-yoru-ni-naku',type:'anime',totalEps:12,time:'18:00'},
+    {title:'Dungeon Meshi',ep:'Episode 24',views:'1.2M',rating:'8.70',slug:'dungeon-meshi',otakuSlug:'dungeon-meshi',type:'anime',totalEps:24,time:'16:00'},
   ],
   6:[
-    {time:'22:00',emoji:'⚔️',title:'The Beginning After the End S2',ep:'Episode 13',views:'378.0K',rating:'8.24',slug:'the-beginning-after-the-end-season-2',type:'anime',totalEps:12},
-    {time:'16:30',emoji:'🏛️',title:'Odayaka Kizoku no Kyuuka',ep:'Episode 13',views:'41.3K',rating:'6.68',slug:'odayaka-kizoku',type:'anime',totalEps:12},
-    {time:'14:00',emoji:'🌙',title:'Versatile Mage',ep:'Episode 46',views:'156.7K',rating:'7.78',slug:'versatile-mage',type:'donghub',totalEps:48},
+    {title:'Attack on Titan Final Part 3',ep:'Episode 11',views:'2.1M',rating:'9.08',slug:'shingeki-no-kyojin-final-season-part-3',otakuSlug:'shingeki-no-kyojin-final-season-part-3',type:'anime',totalEps:11,time:'22:00'},
+    {title:'Odayaka Kizoku no Kyuuka',ep:'Episode 13',views:'41.3K',rating:'6.68',slug:'odayaka-kizoku',otakuSlug:'odayaka-kizoku-no-kyuuka-no-susume',type:'anime',totalEps:12,time:'16:30'},
+    {title:'Oshi no Ko Season 2',ep:'Episode 13',views:'750K',rating:'8.31',slug:'oshi-no-ko-season-2',otakuSlug:'oshi-no-ko-season-2',type:'anime',totalEps:13,time:'14:00'},
   ],
 };
-const DAYNAMES = ['Min','Sen','Sel','Rab','Kam','Jum','Sab'];
 
-// Top by views for hero slider
-const HERO_ANIME = [...ANIME_DATA].sort((a,b) => b.viewsNum - a.viewsNum).slice(0,5);
+const HERO_ANIME = [...ANIME_DATA].sort((a,b)=>b.viewsNum-a.viewsNum).slice(0,6);
 
 // ===================== COVER ENGINE =====================
 let coverCache = {};
-try { coverCache = JSON.parse(localStorage.getItem('tonime_cover_cache2') || '{}'); } catch(e) {}
+try{coverCache=JSON.parse(localStorage.getItem('tonime_cv3')||'{}');}catch(e){}
+function saveCoverCache(){try{localStorage.setItem('tonime_cv3',JSON.stringify(coverCache));}catch(e){}}
+function cleanTitleForSearch(t){return t.replace(/\bSeason\s*\d+\b/gi,'').replace(/\bS\d+\b/gi,'').replace(/\bPart\s*\d+\b/gi,'').replace(/\s{2,}/g,' ').trim();}
 
-function saveCoverCache() {
-  try { localStorage.setItem('tonime_cover_cache2', JSON.stringify(coverCache)); } catch(e) {}
+const coverQueue=[];let coverQueueRunning=false;
+function queueCover(title,el){
+  if(!title||!el||el.dataset.coverQueued)return;
+  el.dataset.coverQueued='1';
+  coverQueue.push({title,el});
+  if(!coverQueueRunning)runCoverQueue();
 }
-
-function cleanTitleForSearch(title) {
-  return title.replace(/\bSeason\s*\d+\b/i,'').replace(/\bS\d+\b/i,'').replace(/\bPart\s*\d+\b/i,'').replace(/\s{2,}/g,' ').trim();
-}
-
-const coverQueue = [];
-let coverQueueRunning = false;
-
-function queueCover(title, el) {
-  if (!title || !el || el.dataset.coverQueued) return;
-  el.dataset.coverQueued = '1';
-  coverQueue.push({ title, el });
-  if (!coverQueueRunning) runCoverQueue();
-}
-
-async function runCoverQueue() {
-  coverQueueRunning = true;
-  while (coverQueue.length) {
-    const { title, el } = coverQueue.shift();
-    await applyCoverToEl(title, el);
-    await new Promise(r => setTimeout(r, 380));
+async function runCoverQueue(){
+  coverQueueRunning=true;
+  while(coverQueue.length){
+    const{title,el}=coverQueue.shift();
+    await applyCoverToEl(title,el);
+    await new Promise(r=>setTimeout(r,350));
   }
-  coverQueueRunning = false;
+  coverQueueRunning=false;
 }
-
-async function applyCoverToEl(title, el) {
-  if (!el || !el.isConnected) return;
-  const key = title.toLowerCase().trim();
-  if (coverCache[key]) { setCoverImage(el, coverCache[key]); return; }
-  try {
-    const q = cleanTitleForSearch(title);
-    const res = await fetch(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(q)}&limit=1&order_by=popularity`);
-    if (!res.ok) throw new Error('err');
-    const data = await res.json();
-    const item = data?.data?.[0];
-    if (item?.images?.jpg) {
-      const url = item.images.jpg.large_image_url || item.images.jpg.image_url;
-      if (url) { coverCache[key] = url; saveCoverCache(); setCoverImage(el, url); }
-    }
-  } catch(e) {}
+async function applyCoverToEl(title,el){
+  if(!el||!el.isConnected)return;
+  const key=title.toLowerCase().trim();
+  if(coverCache[key]){setCoverImage(el,coverCache[key]);return;}
+  // Try Jikan API
+  const attempts=[
+    ()=>fetch(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(cleanTitleForSearch(title))}&limit=1&order_by=popularity`),
+    ()=>fetch(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(title.split(' ').slice(0,3).join(' '))}&limit=1`),
+  ];
+  for(const attempt of attempts){
+    try{
+      const res=await attempt();
+      if(!res.ok)continue;
+      const data=await res.json();
+      const item=data?.data?.[0];
+      if(item?.images?.jpg){
+        const url=item.images.jpg.large_image_url||item.images.jpg.image_url;
+        if(url){coverCache[key]=url;saveCoverCache();setCoverImage(el,url);return;}
+      }
+    }catch(e){}
+  }
 }
-
-function setCoverImage(el, url) {
-  if (!el || el.dataset.coverApplied) return;
-  // Hero slide BG div
-  if (el.classList.contains('hero-bg')) {
-    const img = new Image();
-    img.onload = () => {
-      el.style.backgroundImage = `url('${url}')`;
-      el.style.backgroundSize = 'cover';
-      el.style.backgroundPosition = 'center top';
-      el.dataset.coverApplied = '1';
-      // hide shimmer
-      const shimmer = el.parentElement?.querySelector('.cover-shimmer');
-      if (shimmer) shimmer.style.display = 'none';
+function setCoverImage(el,url){
+  if(!el||el.dataset.coverApplied)return;
+  if(el.classList.contains('hero-bg')){
+    const img=new Image();
+    img.onload=()=>{
+      el.style.backgroundImage=`url('${url}')`;
+      el.style.backgroundSize='cover';
+      el.style.backgroundPosition='center top';
+      el.dataset.coverApplied='1';
+      const shimmer=el.parentElement?.querySelector('.cover-shimmer');
+      if(shimmer)shimmer.style.display='none';
     };
-    img.src = url;
-    return;
+    img.src=url;return;
   }
-  const img = document.createElement('img');
-  img.loading = 'lazy';
-  img.alt = '';
-  img.onload = () => {
-    el.innerHTML = '';
-    el.style.background = 'none';
-    el.appendChild(img);
-    el.dataset.coverApplied = '1';
-  };
-  img.onerror = () => {};
-  img.src = url;
+  const img=document.createElement('img');
+  img.loading='lazy';img.alt='';
+  img.onload=()=>{el.innerHTML='';el.style.background='none';el.appendChild(img);el.dataset.coverApplied='1';};
+  img.onerror=()=>{};
+  img.src=url;
 }
-
-function initCovers(root = document) {
-  root.querySelectorAll('[data-cover-title]').forEach(el => {
-    if (!el.dataset.coverApplied) queueCover(el.getAttribute('data-cover-title'), el);
+function initCovers(root=document){
+  root.querySelectorAll('[data-cover-title]').forEach(el=>{
+    if(!el.dataset.coverApplied)queueCover(el.getAttribute('data-cover-title'),el);
   });
 }
 
+// ===================== SVG ICONS =====================
+const STAR_SVG=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" style="width:11px;height:11px;color:#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+const EYE_SVG=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:11px;height:11px"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
+const TV_SVG_PH=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>`;
+
+function starSVG(){return`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" style="width:13px;height:13px;color:#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;}
+function eyeSVG(){return`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;}
+function tvSVG(){return`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>`;}
+function flameSVG(){return`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>`;}
+function playSVG(){return`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" style="width:16px;height:16px"><polygon points="5 3 19 12 5 21 5 3"/></svg>`;}
+function plusSVG(){return`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`;}
+
+// ===================== CARD HTML =====================
+function cardHTML(a,grid=false){
+  const newBadge=a.isNew?`<div class="card-new">New</div>`:'';
+  const cls=grid?'anime-card':'anime-card card-md';
+  const dat=encodeAnime(a);
+  return`<div class="${cls}" onclick='openPlayer(${dat})'>
+    <div class="card-img">
+      <div class="card-ph" data-cover-title="${a.title.replace(/"/g,'&quot;')}">${TV_SVG_PH}</div>
+      ${newBadge}
+      <div class="card-rating">${STAR_SVG} ${a.rating}</div>
+      <div class="card-ep">Eps ${a.totalEps}</div>
+    </div>
+    <div class="card-body">
+      <div class="card-views">${EYE_SVG} ${a.views}</div>
+      <div class="card-title">${a.title}</div>
+    </div>
+  </div>`;
+}
+
+function encodeAnime(a){
+  return JSON.stringify({title:a.title,type:a.type,slug:a.slug,otakuSlug:a.otakuSlug||a.slug,totalEps:a.totalEps,curEp:1,views:a.views,rating:a.rating}).replace(/'/g,"&#39;");
+}
+
 // ===================== HERO SLIDER =====================
-let currentSlide = 0;
-let slideTimer = null;
+let currentSlide=0,slideTimer=null;
 
-function starSVG(){
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" style="width:13px;height:13px;color:#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
-}
-function eyeSVG(){
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
-}
-function tvSVG(){
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>`;
-}
-function flameSVG(){
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>`;
-}
-function playSVG(){
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" style="width:16px;height:16px"><polygon points="5 3 19 12 5 21 5 3"/></svg>`;
-}
-function plusSVG(){
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`;
-}
-
-function buildHeroSlider() {
-  const slidesEl = document.getElementById('heroSlides');
-  const dotsEl = document.getElementById('heroDots');
-
-  slidesEl.innerHTML = HERO_ANIME.map((a, i) => `
-    <div class="hero-slide" onclick="openPlayer(${JSON.stringify({title:a.title,type:a.type,slug:a.slug,totalEps:a.totalEps,curEp:1,emoji:a.emoji,views:a.views,rating:a.rating})})">
+function buildHeroSlider(){
+  const slidesEl=document.getElementById('heroSlides');
+  const dotsEl=document.getElementById('heroDots');
+  slidesEl.innerHTML=HERO_ANIME.map((a,i)=>`
+    <div class="hero-slide" onclick='openPlayer(${encodeAnime(a)})'>
       <div class="cover-shimmer"></div>
       <div class="hero-bg" id="heroBg${i}" data-cover-title="${a.title.replace(/"/g,'&quot;')}" style="position:absolute;inset:0;background-size:cover;background-position:center top"></div>
-      <div class="hero-overlay"></div>
-      <div class="hero-overlay2"></div>
+      <div class="hero-overlay"></div><div class="hero-overlay2"></div>
       <div class="hero-views">${eyeSVG()} ${a.views}</div>
       <div class="hero-content">
         <div class="hero-badge">${flameSVG()} #${i+1} Paling Banyak Ditonton</div>
@@ -825,224 +711,277 @@ function buildHeroSlider() {
           <span>${tvSVG()} Eps ${a.totalEps}</span>
         </div>
         <div class="hero-acts">
-          <button class="btn-watch" onclick="event.stopPropagation();openPlayer(${JSON.stringify({title:a.title,type:a.type,slug:a.slug,totalEps:a.totalEps,curEp:1,emoji:a.emoji,views:a.views,rating:a.rating})})">
-            ${playSVG()} Tonton
-          </button>
-          <button class="btn-add" onclick="event.stopPropagation()">
-            ${plusSVG()} Tambah
-          </button>
+          <button class="btn-watch" onclick="event.stopPropagation();openPlayer(${encodeAnime(a)})">${playSVG()} Tonton Sekarang</button>
+          <button class="btn-add" onclick="event.stopPropagation()">${plusSVG()} Tambah</button>
         </div>
       </div>
     </div>`).join('');
-
-  dotsEl.innerHTML = HERO_ANIME.map((_,i) =>
-    `<div class="hero-dot${i===0?' active':''}" onclick="event.stopPropagation();goSlide(${i})"></div>`
-  ).join('');
-
-  // Queue covers for all hero slides
-  HERO_ANIME.forEach((a, i) => {
-    const el = document.getElementById(`heroBg${i}`);
-    if (el) queueCover(a.title, el);
+  dotsEl.innerHTML=HERO_ANIME.map((_,i)=>`<div class="hero-dot${i===0?' active':''}" onclick="event.stopPropagation();goSlide(${i})"></div>`).join('');
+  HERO_ANIME.forEach((a,i)=>{
+    const el=document.getElementById(`heroBg${i}`);
+    if(el)queueCover(a.title,el);
   });
-
   startSlideAuto();
 }
 
-function goSlide(n) {
-  currentSlide = n;
-  document.getElementById('heroSlides').style.transform = `translateX(-${n*100}%)`;
-  document.querySelectorAll('.hero-dot').forEach((d,i) => d.classList.toggle('active', i===n));
+function goSlide(n){
+  currentSlide=n;
+  document.getElementById('heroSlides').style.transform=`translateX(-${n*100}%)`;
+  document.querySelectorAll('.hero-dot').forEach((d,i)=>d.classList.toggle('active',i===n));
 }
+function nextSlide(){goSlide((currentSlide+1)%HERO_ANIME.length);resetSlideAuto();}
+function prevSlide(){goSlide((currentSlide-1+HERO_ANIME.length)%HERO_ANIME.length);resetSlideAuto();}
+function startSlideAuto(){clearInterval(slideTimer);slideTimer=setInterval(()=>goSlide((currentSlide+1)%HERO_ANIME.length),5500);}
+function resetSlideAuto(){startSlideAuto();}
 
-function nextSlide() {
-  goSlide((currentSlide + 1) % HERO_ANIME.length);
-  resetSlideAuto();
-}
-function prevSlide() {
-  goSlide((currentSlide - 1 + HERO_ANIME.length) % HERO_ANIME.length);
-  resetSlideAuto();
-}
-function startSlideAuto() {
-  clearInterval(slideTimer);
-  slideTimer = setInterval(() => goSlide((currentSlide + 1) % HERO_ANIME.length), 5000);
-}
-function resetSlideAuto() { startSlideAuto(); }
+// ===================== PLAYER - SUMBER VIDEO =====================
+/*
+  OtakuDesu: https://otakudesu.cloud/anime/{slug}/
+  Samehadaku: https://samehadaku.email/anime/{slug}/
+  
+  Untuk episode langsung:
+  OtakuDesu episode: https://otakudesu.cloud/episode/{slug}-episode-{ep}/
+  Samehadaku episode: https://samehadaku.email/anime/{slug}/episode-{ep}/
+  
+  Karena situs-situs ini memiliki proteksi iframe (X-Frame-Options),
+  kita gunakan pendekatan embed player dengan multiple mirrors.
+*/
 
-// ===================== API HELPERS =====================
-function getEpisodeUrl(type, slug, ep) {
-  if (type === 'anime') return `https://www.sankavollerei.web.id/anime/episode/${slug}-episode-${ep}`;
-  if (type === 'donghub') return `https://www.sankavollerei.com/anime/donghub/episode/${slug}-episode-${ep}`;
-  return `https://www.sankavollerei.com/anime/donghua/episode/${slug}-episode-${ep}`;
+function getVideoSources(slug, otakuSlug, ep){
+  return [
+    {
+      label:'OtakuDesu',
+      icon:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>`,
+      url:`https://otakudesu.cloud/episode/${otakuSlug||slug}-episode-${ep}/`
+    },
+    {
+      label:'Samehadaku',
+      icon:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>`,
+      url:`https://samehadaku.email/anime/${slug}/episode-${ep}/`
+    },
+    {
+      label:'Nonton.pro',
+      icon:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>`,
+      url:`https://nonton.pro/anime/${slug}/episode-${ep}`
+    },
+    {
+      label:'Kusonime',
+      icon:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>`,
+      url:`https://kusonime.com/?s=${encodeURIComponent(slug.replace(/-/g,' '))}`
+    },
+  ];
 }
 
 // ===================== PLAYER =====================
-let currentAnime = null, currentEp = 1, currentSource = 0;
+let currentAnime=null,currentEp=1,currentSource=0;
 
-function openPlayer(anime) {
-  currentAnime = anime; currentEp = anime.curEp || 1; currentSource = 0;
+function openPlayer(anime){
+  currentAnime=anime;currentEp=anime.curEp||1;currentSource=0;
   document.getElementById('playerModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow='hidden';
   renderPlayer();
 }
-function closePlayer() {
+function closePlayer(){
   document.getElementById('playerModal').classList.remove('open');
-  document.body.style.overflow = '';
-  document.getElementById('playerFrame').src = '';
+  document.body.style.overflow='';
+  const frame=document.getElementById('playerFrame');
+  frame.src='about:blank';
+  frame.style.opacity='0';
 }
-function renderPlayer() {
-  const a = currentAnime;
-  document.getElementById('playerTitle').textContent = a.title;
-  document.getElementById('playerInfoTitle').textContent = a.title;
-  document.getElementById('playerInfoEp').textContent = `Episode ${currentEp} dari ${a.totalEps||'?'}`;
-  const thumbEl = document.getElementById('playerThumb');
-  thumbEl.innerHTML = a.emoji||'🎬';
-  thumbEl.dataset.coverApplied=''; thumbEl.dataset.coverQueued='';
-  queueCover(a.title, thumbEl);
-  const badge = document.getElementById('playerTypeBadge');
-  if (a.type==='anime'){badge.className='player-type-badge badge-anime';badge.textContent='Anime';}
-  else{badge.className='player-type-badge badge-donghua';badge.textContent='Donghua';}
-  const url1 = getEpisodeUrl(a.type, a.slug, currentEp);
-  const sources = [{label:'Mirror 1',url:url1},{label:'Mirror 2',url:url1+'?ref=m2'}];
-  document.getElementById('playerSourceTabs').innerHTML = sources.map((s,i)=>
-    `<button class="src-tab${i===currentSource?' active':''}" onclick="switchSource(${i},'${s.url}')">${s.label}</button>`).join('');
+function renderPlayer(){
+  const a=currentAnime;
+  document.getElementById('playerTitle').textContent=a.title;
+  document.getElementById('playerInfoTitle').textContent=a.title;
+  document.getElementById('playerInfoEp').textContent=`Episode ${currentEp} dari ${a.totalEps||'?'} | Pilih sumber jika video tidak muncul`;
+
+  // Thumbnail
+  const thumbEl=document.getElementById('playerThumb');
+  thumbEl.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;color:rgba(147,51,234,0.6)"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>`;
+  thumbEl.dataset.coverApplied='';
+  thumbEl.dataset.coverQueued='';
+  queueCover(a.title,thumbEl);
+
+  // Sources
+  const sources=getVideoSources(a.slug,a.otakuSlug,currentEp);
+  document.getElementById('playerSourceTabs').innerHTML=sources.map((s,i)=>
+    `<button class="src-tab${i===currentSource?' active':''}" onclick="switchSource(${i},'${s.url.replace(/'/g,"\\'")}')">
+      ${s.icon} ${s.label}
+    </button>`).join('');
+
   loadFrame(sources[currentSource].url);
-  const total = a.totalEps||12;
-  document.getElementById('playerEpNav').innerHTML = Array.from({length:total},(_,i)=>i+1).map(ep=>
-    `<button class="ep-btn${ep===currentEp?' active':''}" onclick="changeEp(${ep})">Eps ${ep}</button>`).join('');
+
+  // Episode nav
+  const total=a.totalEps||12;
+  const maxShow=Math.min(total,100);
+  document.getElementById('playerEpNav').innerHTML=Array.from({length:maxShow},(_,i)=>i+1).map(ep=>
+    `<button class="ep-btn${ep===currentEp?' active':''}" onclick="changeEp(${ep})">Ep ${ep}</button>`).join('');
 }
-function loadFrame(url) {
-  const frame = document.getElementById('playerFrame');
-  const loading = document.getElementById('playerLoading');
-  loading.style.display='flex'; frame.style.opacity='0'; frame.src='';
+function loadFrame(url){
+  const frame=document.getElementById('playerFrame');
+  const loading=document.getElementById('playerLoading');
+  loading.style.display='flex';frame.style.opacity='0';
+  frame.src='about:blank';
   setTimeout(()=>{
     frame.src=url;
-    frame.onload=()=>{loading.style.display='none';frame.style.opacity='1';};
-    setTimeout(()=>{loading.style.display='none';frame.style.opacity='1';},4000);
+    let done=false;
+    frame.onload=()=>{
+      if(done)return;done=true;
+      loading.style.display='none';frame.style.opacity='1';
+    };
+    // Fallback timeout - many sites block iframes, show message after 6s
+    setTimeout(()=>{
+      if(done)return;done=true;
+      loading.innerHTML=`
+        <div style="text-align:center;padding:20px">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="rgba(147,51,234,0.5)" stroke-width="1.5" style="width:56px;height:56px;margin:0 auto 14px;display:block"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div style="color:var(--text);font-size:14px;font-weight:700;margin-bottom:8px">Video tidak dapat dimuat</div>
+          <div style="color:var(--text2);font-size:12px;margin-bottom:16px;line-height:1.5">Situs video memblokir embed.<br>Coba sumber lain atau buka di tab baru.</div>
+          <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+            <button onclick="openInTab()" style="background:linear-gradient(135deg,var(--accent),#6d28d9);color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit">Buka Tab Baru</button>
+            <button onclick="trySrc()" style="background:var(--glass);border:1px solid var(--glass-border);color:var(--text2);border-radius:8px;padding:8px 16px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit">Sumber Berikutnya</button>
+          </div>
+        </div>`;
+    },6000);
   },300);
 }
-function changeEp(ep){currentEp=ep;renderPlayer();}
+function openInTab(){
+  const sources=getVideoSources(currentAnime.slug,currentAnime.otakuSlug,currentEp);
+  window.open(sources[currentSource].url,'_blank');
+}
+function trySrc(){
+  const sources=getVideoSources(currentAnime.slug,currentAnime.otakuSlug,currentEp);
+  currentSource=(currentSource+1)%sources.length;
+  document.querySelectorAll('.src-tab').forEach((t,i)=>t.classList.toggle('active',i===currentSource));
+  loadFrame(sources[currentSource].url);
+}
 function switchSource(idx,url){
   currentSource=idx;
   document.querySelectorAll('.src-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
   loadFrame(url);
 }
+function changeEp(ep){
+  currentEp=ep;
+  document.querySelectorAll('.ep-btn').forEach((b,i)=>b.classList.toggle('active',i+1===ep));
+  document.getElementById('playerInfoEp').textContent=`Episode ${currentEp} dari ${currentAnime.totalEps||'?'} | Pilih sumber jika video tidak muncul`;
+  const sources=getVideoSources(currentAnime.slug,currentAnime.otakuSlug,ep);
+  document.getElementById('playerSourceTabs').innerHTML=sources.map((s,i)=>
+    `<button class="src-tab${i===currentSource?' active':''}" onclick="switchSource(${i},'${s.url.replace(/'/g,"\\'")}')">
+      ${s.icon} ${s.label}
+    </button>`).join('');
+  loadFrame(sources[currentSource].url);
+}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closePlayer();});
 
 // ===================== PAGES =====================
-function showPage(name) {
+function showPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-item[data-page]').forEach(n=>n.classList.remove('active'));
   document.querySelectorAll('.mnav-item[data-mpage]').forEach(n=>n.classList.remove('active'));
-  const pg = document.getElementById('page-'+name);
-  if(pg) pg.classList.add('active');
+  const pg=document.getElementById('page-'+name);
+  if(pg)pg.classList.add('active');
   document.querySelectorAll(`[data-page="${name}"]`).forEach(n=>n.classList.add('active'));
   document.querySelectorAll(`[data-mpage="${name}"]`).forEach(n=>n.classList.add('active'));
   window.scrollTo(0,0);
-  if(name==='schedule') buildSchedule();
-  if(name==='genre') renderGenrePage(null);
+  if(name==='schedule')buildSchedule();
+  if(name==='genre')renderGenrePage(null);
 }
 
 // ===================== GENRE =====================
-function toggleGenre(el) {
-  const sub = document.getElementById('genreSub');
-  const arrow = document.getElementById('genreArrow');
+function toggleGenre(){
+  const sub=document.getElementById('genreSub');
+  const arrow=document.getElementById('genreArrow');
   sub.classList.toggle('open');
   arrow.classList.toggle('open');
 }
-let activeGenre = null;
+let activeGenre=null;
 function openGenre(genre){activeGenre=genre;showPage('genre');renderGenrePage(genre);}
-function renderGenrePage(genre) {
-  const chipsEl = document.getElementById('genreChips');
-  chipsEl.innerHTML = ['Semua',...GENRES].map(g=>
+function renderGenrePage(genre){
+  const chipsEl=document.getElementById('genreChips');
+  chipsEl.innerHTML=['Semua',...GENRES].map(g=>
     `<div class="genre-chip${(genre===g||(g==='Semua'&&!genre))?' active':''}" onclick="filterGenre('${g==='Semua'?'':g}')">${g}</div>`
   ).join('');
-  const filtered = genre ? ANIME_DATA.filter(a=>a.genres&&a.genres.includes(genre)) : ANIME_DATA;
-  document.getElementById('genrePageTitle').innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:var(--accent2)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ${genre||'Semua Genre'}`;
-  document.getElementById('genrePageDesc').textContent = genre ? `${filtered.length} anime dalam genre ${genre}` : `${ANIME_DATA.length} total anime & donghua`;
-  document.getElementById('genreResultTitle').textContent = genre||'Semua Anime';
-  document.getElementById('genreResultCount').textContent = `${filtered.length} anime`;
-  const grid = document.getElementById('genreGrid');
-  if(!filtered.length){grid.innerHTML='<div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-text">Tidak ada anime di genre ini</div></div>';return;}
-  grid.innerHTML = filtered.map(a=>cardHTML(a,true)).join('');
+  const filtered=genre?ANIME_DATA.filter(a=>a.genres&&a.genres.includes(genre)):ANIME_DATA;
+  document.getElementById('genrePageTitle').innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:var(--accent2)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ${genre||'Semua Genre'}`;
+  document.getElementById('genrePageDesc').textContent=genre?`${filtered.length} anime dalam genre ${genre}`:`${ANIME_DATA.length} total anime`;
+  document.getElementById('genreResultTitle').textContent=genre||'Semua Anime';
+  document.getElementById('genreResultCount').textContent=`${filtered.length} anime`;
+  const grid=document.getElementById('genreGrid');
+  if(!filtered.length){
+    grid.innerHTML=`<div class="empty-state"><div class="empty-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div class="empty-text">Tidak ada anime di genre ini</div></div>`;
+    return;
+  }
+  grid.innerHTML=filtered.map(a=>cardHTML(a,true)).join('');
   initCovers();
 }
 function filterGenre(g){activeGenre=g||null;renderGenrePage(g||null);}
 
-// ===================== CARD HTML =====================
-const STAR_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" style="width:11px;height:11px;color:#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
-const EYE_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:11px;height:11px"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
-
-function cardHTML(a, grid=false) {
-  const typeLabel = a.type!=='anime'
-    ? `<div class="card-type">Donghua</div>`
-    : (a.isNew ? `<div class="card-new">New</div>` : '');
-  const cls = grid ? 'anime-card' : 'anime-card card-md';
-  return `
-    <div class="${cls}" onclick='openPlayer(${JSON.stringify({title:a.title,type:a.type,slug:a.slug,totalEps:a.totalEps,curEp:1,emoji:a.emoji,views:a.views,rating:a.rating})})'>
+// ===================== HOME INIT =====================
+function initHome(){
+  // New update
+  const newEl=document.getElementById('newUpdateList');
+  newEl.innerHTML=ANIME_DATA.filter(a=>a.isNew).map(a=>cardHTML(a)).join('');
+  // Popular (top 8 by views)
+  const popEl=document.getElementById('popularGrid');
+  const topViews=[...ANIME_DATA].sort((a,b)=>b.viewsNum-a.viewsNum).slice(0,8);
+  popEl.innerHTML=topViews.map((a,i)=>{
+    const dat=encodeAnime(a);
+    return`<div class="anime-card" onclick='openPlayer(${dat})'>
       <div class="card-img">
-        <div class="card-ph" data-cover-title="${a.title.replace(/"/g,'&quot;')}" style="background:linear-gradient(135deg,rgba(30,10,60,1),rgba(55,20,100,1))">${a.emoji}</div>
-        ${typeLabel}
+        <div class="card-ph" data-cover-title="${a.title.replace(/"/g,'&quot;')}">${TV_SVG_PH}</div>
+        ${a.isNew?`<div class="card-new">New</div>`:''}
         <div class="card-rating">${STAR_SVG} ${a.rating}</div>
         <div class="card-ep">Eps ${a.totalEps}</div>
+        <div class="card-rank">#${i+1}</div>
       </div>
       <div class="card-body">
         <div class="card-views">${EYE_SVG} ${a.views}</div>
         <div class="card-title">${a.title}</div>
       </div>
     </div>`;
-}
-
-// ===================== HOME INIT =====================
-function initHome() {
-  // New updates (by isNew flag)
-  const newEl = document.getElementById('newUpdateList');
-  newEl.innerHTML = ANIME_DATA.filter(a=>a.isNew&&a.type==='anime').map(a=>cardHTML(a)).join('');
-  // Donghua
-  const dhEl = document.getElementById('donghuaList');
-  dhEl.innerHTML = ANIME_DATA.filter(a=>a.type!=='anime').map(a=>cardHTML(a)).join('');
-  // Popular (sorted by views, top 6)
-  const popEl = document.getElementById('popularGrid');
-  const topViews = [...ANIME_DATA].sort((a,b)=>b.viewsNum-a.viewsNum).slice(0,6);
-  popEl.innerHTML = topViews.map((a,i) => {
-    const typeLabel = a.type!=='anime'?`<div class="card-type">Donghua</div>`:(a.isNew?`<div class="card-new">New</div>`:'');
-    return `
-      <div class="anime-card" onclick='openPlayer(${JSON.stringify({title:a.title,type:a.type,slug:a.slug,totalEps:a.totalEps,curEp:1,emoji:a.emoji,views:a.views,rating:a.rating})})'>
-        <div class="card-img">
-          <div class="card-ph" data-cover-title="${a.title.replace(/"/g,'&quot;')}" style="background:linear-gradient(135deg,rgba(30,10,60,1),rgba(55,20,100,1))">${a.emoji}</div>
-          ${typeLabel}
-          <div class="card-rating">${STAR_SVG} ${a.rating}</div>
-          <div class="card-ep">Eps ${a.totalEps}</div>
-          <div class="card-rank">#${i+1}</div>
-        </div>
-        <div class="card-body">
-          <div class="card-views">${EYE_SVG} ${a.views}</div>
-          <div class="card-title">${a.title}</div>
-        </div>
-      </div>`;
   }).join('');
+  // Ongoing
+  const onEl=document.getElementById('ongoingList');
+  onEl.innerHTML=ANIME_DATA.filter(a=>a.status==='ongoing').map(a=>cardHTML(a)).join('');
+  // Completed
+  const comEl=document.getElementById('completedList');
+  comEl.innerHTML=ANIME_DATA.filter(a=>a.status==='completed').map(a=>cardHTML(a)).join('');
+  // Subscribed page
+  document.getElementById('subOngoingList').innerHTML=ANIME_DATA.filter(a=>a.status==='ongoing').slice(0,5).map(a=>cardHTML(a)).join('');
+  document.getElementById('subCompletedGrid').innerHTML=ANIME_DATA.filter(a=>a.status==='completed').slice(0,8).map(a=>cardHTML(a,true)).join('');
   initCovers();
 }
 
 // ===================== SEARCH =====================
-function handleSearch(val) {
-  const v = val.toLowerCase().trim();
-  const res = document.getElementById('searchResults');
-  if(!v){res.innerHTML='<div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-text">Ketik nama anime untuk mencari</div></div>';return;}
-  const found = ANIME_DATA.filter(a=>a.title.toLowerCase().includes(v)||(a.genres||[]).some(g=>g.toLowerCase().includes(v)));
-  if(!found.length){res.innerHTML='<div class="empty-state"><div class="empty-icon">😢</div><div class="empty-text">Anime tidak ditemukan</div></div>';return;}
+function handleSearch(val){
+  const v=val.toLowerCase().trim();
+  const res=document.getElementById('searchResults');
+  // sync to both search inputs
+  const si=document.getElementById('searchInput');
+  const si2=document.getElementById('searchInput2');
+  if(document.activeElement===si&&si2)si2.value=val;
+  if(document.activeElement===si2&&si)si.value=val;
+  if(!v){
+    res.innerHTML=`<div class="empty-state"><div class="empty-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div class="empty-text">Ketik nama anime untuk mencari</div></div>`;
+    return;
+  }
+  const found=ANIME_DATA.filter(a=>a.title.toLowerCase().includes(v)||(a.genres||[]).some(g=>g.toLowerCase().includes(v)));
+  if(!found.length){
+    res.innerHTML=`<div class="empty-state"><div class="empty-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="empty-text">Anime tidak ditemukan</div></div>`;
+    return;
+  }
   res.innerHTML=`<div style="font-size:12.5px;color:var(--text2);margin-bottom:13px">${found.length} hasil untuk "<strong style="color:var(--text)">${val}</strong>"</div><div class="anime-grid">${found.map(a=>cardHTML(a,true)).join('')}</div>`;
   initCovers();
 }
 
 // ===================== SCHEDULE =====================
-function buildSchedule() {
-  const daysEl = document.getElementById('schedDays');
-  const today = new Date();
-  const todayDow = today.getDay();
-  daysEl.innerHTML = DAYNAMES.map((d,i)=>{
-    const offset = i-todayDow;
-    const dt = new Date(today); dt.setDate(today.getDate()+offset);
-    return `<div class="day-btn${i===todayDow?' active':''}" onclick="selectDay(this,${i})"><div class="dn">${d}</div><div class="dd">${dt.getDate()}</div></div>`;
+function buildSchedule(){
+  const daysEl=document.getElementById('schedDays');
+  const today=new Date();
+  const todayDow=today.getDay();
+  daysEl.innerHTML=DAYNAMES.map((d,i)=>{
+    const offset=i-todayDow;
+    const dt=new Date(today);dt.setDate(today.getDate()+offset);
+    return`<div class="day-btn${i===todayDow?' active':''}" onclick="selectDay(this,${i})"><div class="dn">${d}</div><div class="dd">${dt.getDate()}</div></div>`;
   }).join('');
   renderSchedList(todayDow);
 }
@@ -1051,14 +990,18 @@ function selectDay(el,dow){
   el.classList.add('active');
   renderSchedList(dow);
 }
-function renderSchedList(dow) {
-  const listEl = document.getElementById('schedList');
-  const items = SCHED_DATA[dow]||[];
-  if(!items.length){listEl.innerHTML='<div class="empty-state"><div class="empty-icon">📅</div><div class="empty-text">Tidak ada jadwal hari ini</div></div>';return;}
-  listEl.innerHTML = items.map(it=>`
-    <div class="sched-item" onclick='openPlayer(${JSON.stringify({title:it.title,type:it.type||"anime",slug:it.slug,totalEps:it.totalEps,curEp:1,emoji:it.emoji,views:it.views,rating:it.rating})})'>
+function renderSchedList(dow){
+  const listEl=document.getElementById('schedList');
+  const items=SCHED_DATA[dow]||[];
+  if(!items.length){
+    listEl.innerHTML=`<div class="empty-state"><div class="empty-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="empty-text">Tidak ada jadwal hari ini</div></div>`;
+    return;
+  }
+  listEl.innerHTML=items.map(it=>{
+    const dat=JSON.stringify({title:it.title,type:it.type||'anime',slug:it.slug,otakuSlug:it.otakuSlug||it.slug,totalEps:it.totalEps,curEp:1,views:it.views,rating:it.rating}).replace(/'/g,"&#39;");
+    return`<div class="sched-item" onclick='openPlayer(${dat})'>
       <div class="sched-time">${it.time}</div>
-      <div class="sched-thumb" data-cover-title="${it.title.replace(/"/g,'&quot;')}">${it.emoji}</div>
+      <div class="sched-thumb" data-cover-title="${it.title.replace(/"/g,'&quot;')}">${TV_SVG_PH}</div>
       <div class="sched-info">
         <div class="sched-title">${it.title}</div>
         <div class="sched-ep">${it.ep}</div>
@@ -1068,7 +1011,8 @@ function renderSchedList(dow) {
         </div>
         <div class="sm-s"><div class="sm-dot"></div>Menunggu Update Baru</div>
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
   initCovers();
 }
 
